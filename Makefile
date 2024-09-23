@@ -139,11 +139,11 @@ install-python-dependencies:
 		poetry run pip install playwright; \
 		poetry run playwright install chromium; \
 	else \
-		if [ ! -f cache/playwright_chromium_is_installed.txt ]; then \
+		if [ ! -f /tmp/cache/playwright_chromium_is_installed.txt ]; then \
 			echo "Running playwright install --with-deps chromium..."; \
 			poetry run playwright install --with-deps chromium; \
-			mkdir -p cache; \
-			touch cache/playwright_chromium_is_installed.txt; \
+			mkdir -p /tmp/cache; \
+			touch /tmp/cache/playwright_chromium_is_installed.txt; \
 		else \
 			echo "Setup already done. Skipping playwright installation."; \
 		fi \
@@ -158,11 +158,7 @@ install-frontend-dependencies:
 	@cd frontend && npm install
 	@echo "$(GREEN)Frontend dependencies installed successfully.$(RESET)"
 
-install-pre-commit-hooks:
-	@echo "$(YELLOW)Installing pre-commit hooks...$(RESET)"
-	@git config --unset-all core.hooksPath || true
-	@poetry run pre-commit install --config $(PRE_COMMIT_CONFIG_PATH)
-	@echo "$(GREEN)Pre-commit hooks installed successfully.$(RESET)"
+
 
 lint-backend:
 	@echo "$(YELLOW)Running linters...$(RESET)"

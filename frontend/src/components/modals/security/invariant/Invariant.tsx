@@ -314,7 +314,7 @@ function SecurityInvariant(): JSX.Element {
           </div>
         </ul>
       </div>
-      <div className="flex flex-col min-h-0 w-full overflow-y-auto bg-neutral-900">
+      <div className="flex flex-col min-h-0 w-full overflow-y-auto bg-black">
         {sections[activeSection as SectionType]}
       </div>
     </div>

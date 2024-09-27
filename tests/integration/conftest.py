@@ -47,8 +47,8 @@ def pytest_exception_interact(node, call, report):
 
 def filter_out_symbols(input):
     # remove shell hostname patterns (e.g., will change between each run)
-    # openhands@379c7fce40b4:/workspace $
-    input = re.sub(r'(openhands|root)@.*(:/.*)', r'\1[DUMMY_HOSTNAME]\2', input)
+    # curioai@379c7fce40b4:/workspace $
+    input = re.sub(r'(curioai|root)@.*(:/.*)', r'\1[DUMMY_HOSTNAME]\2', input)
 
     # mask the specific part in a poetry path
     input = re.sub(

@@ -158,7 +158,7 @@ function CodeEditor(): JSX.Element {
   };
 
   return (
-    <div className="flex h-full w-full bg-neutral-900 transition-all duration-500 ease-in-out relative">
+    <div className="flex h-full w-full bg-black transition-all duration-500 ease-in-out relative">
       <FileExplorer />
       <div className="flex flex-col min-h-0 w-full">
         <div className="flex justify-between items-center border-b border-neutral-600 mb-4">
@@ -167,7 +167,7 @@ function CodeEditor(): JSX.Element {
             classNames={{
               base: "w-full",
               tabList:
-                "w-full relative rounded-none bg-neutral-900 p-0 border-divider",
+                "w-full relative rounded-none bg-black p-0 border-divider",
               cursor: "w-full bg-neutral-600 rounded-none",
               tab: "max-w-fit px-4 h-[36px]",
               tabContent: "group-data-[selected=true]:text-white",

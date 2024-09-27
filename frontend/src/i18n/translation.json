@@ -665,17 +665,17 @@
     "de": "Bild hochladen"
   },
   "CHAT_INTERFACE$INITIAL_MESSAGE": {
-    "en": "Hi! I'm OpenHands, an AI Software Engineer. What would you like to build with me today?",
-    "zh-CN": "你好！我是 OpenHands，一名 AI 软件工程师。今天想和我一起编写什么程序呢?",
-    "de": "Hi! Ich bin OpenHands, ein KI-Softwareingenieur. Was möchten Sie heute mit mir erstellen?",
-    "ko-KR": "안녕하세요! 저는 오픈데빈(OpenHands), AI 소프트웨어 엔지니어입니다. 오늘은 저와 함께 무엇을 만들어 볼까요?",
-    "no": "Hi! I'm OpenHands, an AI Software Engineer. What would you like to build with me today?",
-    "zh-TW": "嗨！我是 OpenHands，一位人工智慧軟體工程師。你今天想和我一起建造什麼？",
-    "it": "Hi! I'm OpenHands, an AI Software Engineer. What would you like to build with me today?",
-    "pt": "Hi! I'm OpenHands, an AI Software Engineer. What would you like to build with me today?",
-    "es": "Hi! I'm OpenHands, an AI Software Engineer. What would you like to build with me today?",
-    "ar": "مرحبا! أنا OpenHands، مهندس برمجيات AI. ماذا تود أن تبني معي اليوم؟",
-    "fr": "Salut! Je suis OpenHands, un ingénieur logiciel en IA. Que voudriez-vous construire avec moi aujourd'hui?"
+    "en": "Hi! I'm CurioAI, an AI Software Engineer. What would you like to build with me today?",
+    "zh-CN": "你好！我是 CurioAI，一名 AI 软件工程师。今天想和我一起编写什么程序呢?",
+    "de": "Hi! Ich bin CurioAI, ein KI-Softwareingenieur. Was möchten Sie heute mit mir erstellen?",
+    "ko-KR": "안녕하세요! 저는 오픈데빈(CurioAI), AI 소프트웨어 엔지니어입니다. 오늘은 저와 함께 무엇을 만들어 볼까요?",
+    "no": "Hi! I'm CurioAI, an AI Software Engineer. What would you like to build with me today?",
+    "zh-TW": "嗨！我是 CurioAI，一位人工智慧軟體工程師。你今天想和我一起建造什麼？",
+    "it": "Hi! I'm CurioAI, an AI Software Engineer. What would you like to build with me today?",
+    "pt": "Hi! I'm CurioAI, an AI Software Engineer. What would you like to build with me today?",
+    "es": "Hi! I'm CurioAI, an AI Software Engineer. What would you like to build with me today?",
+    "ar": "مرحبا! أنا CurioAI، مهندس برمجيات AI. ماذا تود أن تبني معي اليوم؟",
+    "fr": "Salut! Je suis CurioAI, un ingénieur logiciel en IA. Que voudriez-vous construire avec moi aujourd'hui?"
   },
   "CHAT_INTERFACE$ASSISTANT": {
     "en": "Assistant",

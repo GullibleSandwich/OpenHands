@@ -31,7 +31,7 @@ function Controls({
   showSecurityLock,
 }: Props): JSX.Element {
   return (
-    <div className="flex w-full p-4 bg-neutral-900 items-center shrink-0 justify-between">
+    <div className="flex w-full p-4 bg-black items-center shrink-0 justify-between">
       <div className="flex items-center gap-4">
         <AgentControlBar />
       </div>
@@ -102,7 +102,7 @@ function App(): JSX.Element {
 
   return (
     <div className="h-screen w-screen flex flex-col">
-      <div className="flex grow bg-neutral-900 text-white min-h-0">
+      <div className="flex grow bg-black text-white min-h-0">
         <Container
           orientation={Orientation.HORIZONTAL}
           className="grow h-full min-h-0 min-w-0 px-3 pt-3"
@@ -113,11 +113,11 @@ function App(): JSX.Element {
             <Container
               orientation={Orientation.VERTICAL}
               className="h-full min-h-0 min-w-0"
-              initialSize={window.innerHeight - 300}
+              initialSize={window.innerHeight}
               firstChild={<Workspace />}
-              firstClassName="rounded-xl border border-neutral-600 bg-neutral-800 flex flex-col overflow-hidden"
-              secondChild={<Terminal />}
-              secondClassName="rounded-xl border border-neutral-600 bg-neutral-800"
+              firstClassName="rounded-xl border border-neutral-600 bg-black flex flex-col overflow-hidden"
+              secondChild={null}
+              secondClassName="rounded-xl border border-neutral-600 bg-black"
             />
           }
           secondClassName="flex flex-col overflow-hidden"

@@ -1,0 +1,388 @@
+[33mRunning the app...(B[m
+[33mStarting backend server...(B[m
+[33mWaiting for the backend to start...(B[m
+INFO:     Started server process [9004]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:3000 (Press CTRL+C to quit)
+[32mBackend started successfully.(B[m
+[36mStarting frontend with npm...(B[m
+
+> openhands-frontend@0.9.2 start
+> npm run make-i18n && vite --port 3001
+
+
+> openhands-frontend@0.9.2 make-i18n
+> node scripts/make-i18n-translations.cjs
+
+
+  VITE v5.4.3  ready in 2540 ms
+
+  ➜  Local:   http://localhost:3001/
+  ➜  Network: use --host to expose
+INFO:     10.240.2.131:0 - "GET /api/options/models HTTP/1.1" 200 OK
+INFO:     10.240.2.131:0 - "GET /api/options/models HTTP/1.1" 200 OK
+INFO:     10.240.2.131:0 - "GET /api/options/agents HTTP/1.1" 200 OK
+INFO:     10.240.2.131:0 - "GET /api/options/agents HTTP/1.1" 200 OK
+INFO:     10.240.2.131:0 - "GET /api/options/security-analyzers HTTP/1.1" 200 OK
+INFO:     10.240.2.131:0 - "GET /api/options/security-analyzers HTTP/1.1" 200 OK
+INFO:     ('10.240.2.131', 0) - "WebSocket /ws" [accepted]
+INFO:     connection open
+[92m17:50:54 - openhands:INFO[0m: agent.py:79 - Using security analyzer:
+[92m17:50:54 - openhands:INFO[0m: agent.py:90 - Initializing runtime `eventstream` now...
+[92m17:50:54 - openhands:INFO[0m: runtime_build.py:43 - Using project root: /workspaces/OpenHands
+[92m17:50:56 - openhands:INFO[0m: runtime_build.py:60 - * Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - poetry-core
+* Getting build dependencies for sdist...
+* Building sdist...
+Successfully built openhands_ai-0.9.2.tar.gz
+
+[92m17:50:56 - openhands:INFO[0m: runtime_build.py:72 - Source distribution created at /tmp/tmp5qwc_pcx/openhands_ai-0.9.2.tar.gz
+[92m17:50:56 - openhands:INFO[0m: runtime_build.py:83 - Unpacked source code directory: /tmp/tmp5qwc_pcx/code
+[92m17:50:56 - openhands:INFO[0m: runtime_build.py:154 - Input base image: nikolaik/python-nodejs:python3.11-nodejs22
+Skip init: False
+Extra deps: None
+Hash for docker build directory [/tmp/tmp5qwc_pcx] (contents: ['code', 'Dockerfile']): d3242eb88218fde70c51b99b0f4be1a4
+
+[92m17:50:56 - openhands:INFO[0m: docker.py:72 - Checking, if image ghcr.io/all-hands-ai/runtime:d3242eb88218fde70c51b99b0f4be1a4 exists locally.
+[92m17:50:56 - openhands:INFO[0m: docker.py:78 - Image not found locally. Trying to pull it, please wait...
+[92m17:50:58 - openhands:INFO[0m: docker.py:88 - Could not pull image directly.
+[92m17:50:58 - openhands:INFO[0m: docker.py:72 - Checking, if image ghcr.io/all-hands-ai/runtime:oh_v0.9.2_image_nikolaik_s_python-nodejs_tag_python3.11-nodejs22 exists locally.
+[92m17:50:58 - openhands:INFO[0m: docker.py:78 - Image not found locally. Trying to pull it, please wait...
+[92m17:53:50 - openhands:INFO[0m: docker.py:82 - Image ghcr.io/all-hands-ai/runtime:oh_v0.9.2_image_nikolaik_s_python-nodejs_tag_python3.11-nodejs22 pulled successfully.
+[92m17:53:50 - openhands:INFO[0m: runtime_build.py:265 - Could not find docker image [ghcr.io/all-hands-ai/runtime:d3242eb88218fde70c51b99b0f4be1a4]
+Will try to re-build it from latest [ghcr.io/all-hands-ai/runtime:oh_v0.9.2_image_nikolaik_s_python-nodejs_tag_python3.11-nodejs22] image to potentially save time for dependencies installation.
+
+[92m17:53:50 - openhands:INFO[0m: runtime_build.py:43 - Using project root: /workspaces/OpenHands
+[92m17:53:53 - openhands:INFO[0m: runtime_build.py:60 - * Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - poetry-core
+* Getting build dependencies for sdist...
+* Building sdist...
+Successfully built openhands_ai-0.9.2.tar.gz
+
+[92m17:53:53 - openhands:INFO[0m: runtime_build.py:72 - Source distribution created at /tmp/tmpg4zzlu4p/openhands_ai-0.9.2.tar.gz
+[92m17:53:53 - openhands:INFO[0m: runtime_build.py:83 - Unpacked source code directory: /tmp/tmpg4zzlu4p/code
+[92m17:53:53 - openhands:INFO[0m: runtime_build.py:154 - Input base image: ghcr.io/all-hands-ai/runtime:oh_v0.9.2_image_nikolaik_s_python-nodejs_tag_python3.11-nodejs22
+Skip init: True
+Extra deps: None
+Hash for docker build directory [/tmp/tmpg4zzlu4p] (contents: ['code', 'Dockerfile']): ae0e82efd3208e56428c1b72aa9250f9
+
+[92m17:53:53 - openhands:INFO[0m: docker.py:29 - Step 1/4 : FROM ghcr.io/all-hands-ai/runtime:oh_v0.9.2_image_nikolaik_s_python-nodejs_tag_python3.11-nodejs22
+[92m17:53:53 - openhands:INFO[0m: docker.py:29 -
+[92m17:53:53 - openhands:INFO[0m: docker.py:29 - ---> c906b683e4a7
+[92m17:53:53 - openhands:INFO[0m: docker.py:29 - Step 2/4 : RUN if [ -d /openhands/code ]; then rm -rf /openhands/code; fi
+[92m17:53:53 - openhands:INFO[0m: docker.py:29 -
+[92m17:53:53 - openhands:INFO[0m: docker.py:29 - ---> Running in e369d69ab4a4
+[92m17:54:02 - openhands:INFO[0m: docker.py:29 - ---> Removed intermediate container e369d69ab4a4
+[92m17:54:02 - openhands:INFO[0m: docker.py:29 - ---> 66c5a9801857
+[92m17:54:02 - openhands:INFO[0m: docker.py:29 - Step 3/4 : COPY ./code /openhands/code
+[92m17:54:02 - openhands:INFO[0m: docker.py:29 -
+[92m17:54:09 - openhands:INFO[0m: docker.py:29 - ---> 2718bfcc537a
+[92m17:54:09 - openhands:INFO[0m: docker.py:29 - Step 4/4 : RUN cd /openhands/code &&     /openhands/miniforge3/bin/mamba run -n base poetry env use python3.11 &&     /openhands/miniforge3/bin/mamba run -n base poetry install --only main,runtime --no-interaction --no-root &&     apt-get update &&     /openhands/miniforge3/bin/mamba run -n base poetry run pip install playwright &&     /openhands/miniforge3/bin/mamba run -n base poetry run playwright install --with-deps chromium &&     export OD_INTERPRETER_PATH=$(/openhands/miniforge3/bin/mamba run -n base poetry run python -c "import sys; print(sys.executable)") &&           /openhands/miniforge3/bin/mamba run -n base poetry cache clear --all . &&          apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* &&     /openhands/miniforge3/bin/mamba clean --all
+[92m17:54:09 - openhands:INFO[0m: docker.py:29 -
+[92m17:54:09 - openhands:INFO[0m: docker.py:29 - ---> Running in 334b1eef2b15
+[92m17:54:11 - openhands:INFO[0m: docker.py:29 - Using virtualenv: /openhands/poetry/openhands-ai-5O4_aCHf-py3.11
+[92m17:54:34 - openhands:INFO[0m: docker.py:29 - Installing dependencies from lock file
+
+Package operations: 0 installs, 17 updates, 0 removals
+
+  - Updating numpy (1.26.4 -> 2.1.1)
+  - Downgrading datasets (3.0.0 -> 2.21.0)
+  - Downgrading evaluate (0.4.3 -> 0.4.2)
+  - Downgrading openai (1.44.1 -> 1.43.1)
+  - Downgrading botocore (1.35.16 -> 1.35.13)
+  - Downgrading browsergym-core (0.5.1 -> 0.3.4)
+  - Downgrading browsergym-experiments (0.5.1 -> 0.3.4)
+  - Downgrading browsergym-miniwob (0.5.1 -> 0.3.4)
+  - Downgrading browsergym-webarena (0.5.1 -> 0.3.4)
+  - Downgrading google-ai-generativelanguage (0.6.9 -> 0.6.6)
+  - Downgrading boto3 (1.35.16 -> 1.35.13)
+  - Downgrading browsergym (0.5.1 -> 0.3.4)
+  - Downgrading fastapi (0.114.1 -> 0.113.0)
+  - Downgrading google-cloud-aiplatform (1.66.0 -> 1.65.0)
+  - Downgrading google-generativeai (0.8.0 -> 0.7.2)
+  - Downgrading json-repair (0.29.2 -> 0.29.1)
+  - Downgrading litellm (1.44.24 -> 1.44.19)
+[92m17:54:35 - openhands:INFO[0m: docker.py:29 - Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+[92m17:54:35 - openhands:INFO[0m: docker.py:29 - Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+[92m17:54:35 - openhands:INFO[0m: docker.py:29 - Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+[92m17:54:35 - openhands:INFO[0m: docker.py:29 - Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8787 kB]
+[92m17:54:35 - openhands:INFO[0m: docker.py:29 - Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [2468 B]
+[92m17:54:35 - openhands:INFO[0m: docker.py:29 - Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [183 kB]
+[92m17:54:37 - openhands:INFO[0m: docker.py:29 - Fetched 9227 kB in 2s (4478 kB/s)
+Reading package lists...
+[92m17:54:37 - openhands:INFO[0m: docker.py:29 -
+[92m17:54:41 - openhands:INFO[0m: docker.py:29 - Requirement already satisfied: playwright in /openhands/poetry/openhands-ai-5O4_aCHf-py3.11/lib/python3.11/site-packages (1.39.0)
+Requirement already satisfied: greenlet==3.0.0 in /openhands/poetry/openhands-ai-5O4_aCHf-py3.11/lib/python3.11/site-packages (from playwright) (3.0.0)
+Requirement already satisfied: pyee==11.0.1 in /openhands/poetry/openhands-ai-5O4_aCHf-py3.11/lib/python3.11/site-packages (from playwright) (11.0.1)
+Requirement already satisfied: typing-extensions in /openhands/poetry/openhands-ai-5O4_aCHf-py3.11/lib/python3.11/site-packages (from pyee==11.0.1->playwright) (4.12.2)
+5:54:41 PM [vite] hmr update /src/components/AgentStatusBar.tsx, /src/App.css, /src/components/Workspace.tsx, /src/App.tsx, /src/components/AgentControlBar.tsx, /src/components/modals/load-previous-session/LoadPreviousSessionModal.tsx, /src/components/modals/settings/SettingsModal.tsx, /src/components/chat/ConfirmationButtons.tsx, /src/components/chat/ChatInterface.tsx, /src/components/modals/feedback/FeedbackModal.tsx, /src/components/terminal/Terminal.tsx, /src/components/Browser.tsx, /src/components/Planner.tsx, /src/components/chat/ChatInput.tsx, /src/components/Jupyter.tsx, /src/components/file-explorer/CodeEditor.tsx, /src/components/modals/settings/SettingsForm.tsx, /src/components/modals/security/invariant/Invariant.tsx, /src/components/file-explorer/FileExplorer.tsx, /src/components/file-explorer/TreeNode.tsx, /src/components/chat/ChatMessage.tsx, /src/components/modals/settings/AutocompleteCombobox.tsx, /src/components/file-explorer/ExplorerTree.tsx
+[92m17:54:47 - openhands:INFO[0m: docker.py:29 - Installing dependencies...
+Hit:1 http://deb.debian.org/debian bookworm InRelease
+Hit:2 http://deb.debian.org/debian bookworm-updates InRelease
+Hit:3 http://deb.debian.org/debian-security bookworm-security InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+libasound2 is already the newest version (1.2.8-1+b1).
+libatk-bridge2.0-0 is already the newest version (2.46.0-5).
+libatk1.0-0 is already the newest version (2.46.0-5).
+libatspi2.0-0 is already the newest version (2.46.0-5).
+libcairo2 is already the newest version (1.16.0-7).
+libcups2 is already the newest version (2.4.2-3+deb12u7).
+libdbus-1-3 is already the newest version (1.14.10-1~deb12u1).
+libdrm2 is already the newest version (2.4.114-1+b1).
+libgbm1 is already the newest version (22.3.6-1+deb12u1).
+libglib2.0-0 is already the newest version (2.74.6-2+deb12u3).
+libnspr4 is already the newest version (2:4.35-1).
+libnss3 is already the newest version (2:3.87.1-1).
+libpango-1.0-0 is already the newest version (1.50.12+ds-1).
+libx11-6 is already the newest version (2:1.8.4-2+deb12u2).
+libxcb1 is already the newest version (1.15-1).
+libxcomposite1 is already the newest version (1:0.4.5-1).
+libxdamage1 is already the newest version (1:1.1.6-1).
+libxext6 is already the newest version (2:1.3.4-1+b1).
+libxfixes3 is already the newest version (1:6.0.0-2).
+libxkbcommon0 is already the newest version (1.5.0-1).
+libxrandr2 is already the newest version (2:1.5.2-2+b1).
+xvfb is already the newest version (2:21.1.7-3+deb12u7).
+fonts-noto-color-emoji is already the newest version (2.042-0+deb12u1).
+fonts-unifont is already the newest version (1:15.0.01-2).
+libfontconfig1 is already the newest version (2.14.1-4).
+libfreetype6 is already the newest version (2.12.1+dfsg-5+deb12u3).
+xfonts-scalable is already the newest version (1:1.0.3-1.3).
+fonts-liberation is already the newest version (1:1.07.4-11).
+fonts-ipafont-gothic is already the newest version (00303-23).
+fonts-wqy-zenhei is already the newest version (0.9.45-8).
+fonts-tlwg-loma-otf is already the newest version (1:0.7.3-1).
+fonts-freefont-ttf is already the newest version (20120503-10).
+0 upgraded, 0 newly installed, 0 to remove and 4 not upgraded.
+[92m17:54:51 - openhands:INFO[0m: docker.py:29 - There are no unused tarball(s) to remove.
+There are no index cache(s) to remove.
+There are no unused package(s) to remove.
+There are no tempfile(s) to remove.
+There are no logfile(s) to remove.
+[92m17:55:19 - openhands:INFO[0m: docker.py:29 - ---> Removed intermediate container 334b1eef2b15
+[92m17:55:19 - openhands:INFO[0m: docker.py:29 - ---> d4b679f2a309
+[92m17:55:19 - openhands:INFO[0m: docker.py:33 - {'aux': {'ID': 'sha256:d4b679f2a309fd018939f41be41cb6b72863ea048656ebd8d6dea4f9da8da671'}}
+[92m17:55:19 - openhands:INFO[0m: docker.py:29 - Successfully built d4b679f2a309
+[92m17:55:19 - openhands:INFO[0m: docker.py:29 - Successfully tagged ghcr.io/all-hands-ai/runtime:d3242eb88218fde70c51b99b0f4be1a4
+[92m17:55:19 - openhands:INFO[0m: docker.py:35 - Image [ghcr.io/all-hands-ai/runtime:d3242eb88218fde70c51b99b0f4be1a4] build finished.
+[92m17:55:19 - openhands:INFO[0m: docker.py:42 - Re-tagged image [ghcr.io/all-hands-ai/runtime:d3242eb88218fde70c51b99b0f4be1a4] with more generic tag [oh_v0.9.2_image_nikolaik_s_python-nodejs_tag_python3.11-nodejs22]
+[92m17:55:19 - openhands:INFO[0m: docker.py:58 - Image ghcr.io/all-hands-ai/runtime with tags [d3242eb88218fde70c51b99b0f4be1a4, oh_v0.9.2_image_nikolaik_s_python-nodejs_tag_python3.11-nodejs22] built successfully
+[92m17:55:19 - openhands:INFO[0m: runtime.py:183 - Starting container with image: ghcr.io/all-hands-ai/runtime:d3242eb88218fde70c51b99b0f4be1a4 and name: openhands-sandbox-3ffada24-2795-4c8e-b050-0825686a314b_e717b442-61b9-40eb-997b-c0ff5294be9a
+[92m17:55:19 - openhands:INFO[0m: runtime.py:204 - Mount dir: /workspace
+[92m17:55:20 - openhands:INFO[0m: runtime.py:238 - Container started. Server url: http://localhost:50495
+[92m17:55:20 - openhands:INFO[0m: runtime.py:157 - Container initialized with plugins: ['agent_skills', 'jupyter']
+[92m17:55:20 - openhands:INFO[0m: runtime.py:160 - Container initialized with env vars: None
+[92m17:55:20 - openhands:INFO[0m: agent.py:116 - Agents: {'agent': AgentConfig(micro_agent_name=None, memory_enabled=False, memory_max_threads=2, llm_config=None)}
+[92m17:55:20 - openhands:INFO[0m: agent.py:117 - Creating agent CodeActAgent using LLM openai/gpt-4o
+[92m17:55:20 - openhands:ERROR[0m: state.py:118 - Failed to restore state from session: sessions/3ffada24-2795-4c8e-b050-0825686a314b/agent_state.pkl
+[92m17:55:20 - openhands:INFO[0m: agent.py:139 - Error restoring state: sessions/3ffada24-2795-4c8e-b050-0825686a314b/agent_state.pkl
+[92m17:55:20 - openhands:INFO[0m: agent.py:140 - Agent controller initialized.
+[92m17:55:20 - openhands:INFO[0m: session.py:139 - Server event
+[92m17:55:20 - openhands:INFO[0m: agent_controller.py:150 - [Agent Controller 3ffada24-2795-4c8e-b050-0825686a314b] Starting step loop...
+[92m17:55:20 - openhands:INFO[0m: session.py:139 - Server event
+[92m17:55:30 - openhands:INFO[0m: session.py:65 - WebSocket disconnected, sid: 3ffada24-2795-4c8e-b050-0825686a314b
+INFO:     connection closed
+[92m17:55:30 - openhands:INFO[0m: agent_controller.py:155 - AgentController task was cancelled
+[92m17:55:30 - openhands:INFO[0m: session.py:139 - Server event
+INFO:     ('10.240.3.64', 0) - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiIzZmZhZGEyNC0yNzk1LTRjOGUtYjA1MC0wODI1Njg2YTMxNGIifQ.VIKSH3VJn4X-vReJVlXB6tO0k_2rmETSwbRUM1LVpWM" [accepted]
+INFO:     ('10.240.3.196', 0) - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiIzZmZhZGEyNC0yNzk1LTRjOGUtYjA1MC0wODI1Njg2YTMxNGIifQ.VIKSH3VJn4X-vReJVlXB6tO0k_2rmETSwbRUM1LVpWM" [accepted]
+INFO:     connection open
+INFO:     connection open
+[92m17:55:30 - openhands:INFO[0m: session.py:65 - WebSocket disconnected, sid: 3ffada24-2795-4c8e-b050-0825686a314b
+INFO:     connection closed
+[92m17:55:30 - openhands:INFO[0m: session.py:65 - WebSocket disconnected, sid: 3ffada24-2795-4c8e-b050-0825686a314b
+INFO:     connection closed
+5:55:30 PM [vite] ws proxy socket error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:954:11)
+    at Socket._write (node:net:966:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at Socket.ondata (node:internal/streams/readable:1007:22)
+    at Socket.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:191:23)
+5:55:30 PM [vite] ws proxy socket error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:954:11)
+    at Socket._write (node:net:966:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at Socket.ondata (node:internal/streams/readable:1007:22)
+    at Socket.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:191:23)
+5:56:47 PM [vite] hmr update /src/components/AgentStatusBar.tsx, /src/App.css, /src/components/Workspace.tsx, /src/App.tsx, /src/components/AgentControlBar.tsx, /src/components/modals/load-previous-session/LoadPreviousSessionModal.tsx, /src/components/modals/settings/SettingsModal.tsx, /src/components/chat/ConfirmationButtons.tsx, /src/components/chat/ChatInterface.tsx, /src/components/modals/feedback/FeedbackModal.tsx, /src/components/terminal/Terminal.tsx, /src/components/Browser.tsx, /src/components/Planner.tsx, /src/components/chat/ChatInput.tsx, /src/components/Jupyter.tsx, /src/components/file-explorer/CodeEditor.tsx, /src/components/modals/settings/SettingsForm.tsx, /src/components/modals/security/invariant/Invariant.tsx, /src/components/file-explorer/FileExplorer.tsx, /src/components/file-explorer/TreeNode.tsx, /src/components/chat/ChatMessage.tsx, /src/components/modals/settings/AutocompleteCombobox.tsx, /src/components/file-explorer/ExplorerTree.tsx
+INFO:     10.240.2.131:0 - "GET /api/options/models HTTP/1.1" 200 OK
+INFO:     10.240.2.131:0 - "GET /api/options/models HTTP/1.1" 200 OK
+INFO:     10.240.2.131:0 - "GET /api/options/agents HTTP/1.1" 200 OK
+INFO:     10.240.2.131:0 - "GET /api/options/agents HTTP/1.1" 200 OK
+INFO:     10.240.2.131:0 - "GET /api/options/security-analyzers HTTP/1.1" 200 OK
+INFO:     10.240.2.131:0 - "GET /api/options/security-analyzers HTTP/1.1" 200 OK
+INFO:     ('10.240.3.64', 0) - "WebSocket /ws" [accepted]
+INFO:     connection open
+[92m17:57:19 - openhands:INFO[0m: agent.py:79 - Using security analyzer:
+[92m17:57:19 - openhands:INFO[0m: agent.py:90 - Initializing runtime `eventstream` now...
+[92m17:57:19 - openhands:INFO[0m: runtime_build.py:43 - Using project root: /workspaces/OpenHands
+[92m17:57:21 - openhands:INFO[0m: runtime_build.py:60 - * Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - poetry-core
+* Getting build dependencies for sdist...
+* Building sdist...
+Successfully built openhands_ai-0.9.2.tar.gz
+
+[92m17:57:21 - openhands:INFO[0m: runtime_build.py:72 - Source distribution created at /tmp/tmp8p0gfc9_/openhands_ai-0.9.2.tar.gz
+[92m17:57:22 - openhands:INFO[0m: runtime_build.py:83 - Unpacked source code directory: /tmp/tmp8p0gfc9_/code
+[92m17:57:22 - openhands:INFO[0m: runtime_build.py:154 - Input base image: nikolaik/python-nodejs:python3.11-nodejs22
+Skip init: False
+Extra deps: None
+Hash for docker build directory [/tmp/tmp8p0gfc9_] (contents: ['code', 'Dockerfile']): d3242eb88218fde70c51b99b0f4be1a4
+
+[92m17:57:22 - openhands:INFO[0m: docker.py:72 - Checking, if image ghcr.io/all-hands-ai/runtime:d3242eb88218fde70c51b99b0f4be1a4 exists locally.
+[92m17:57:22 - openhands:INFO[0m: docker.py:74 - Image ghcr.io/all-hands-ai/runtime:d3242eb88218fde70c51b99b0f4be1a4 found locally.
+[92m17:57:22 - openhands:INFO[0m: runtime_build.py:256 - Image [ghcr.io/all-hands-ai/runtime:d3242eb88218fde70c51b99b0f4be1a4] already exists so we will reuse it.
+[92m17:57:22 - openhands:INFO[0m: runtime.py:183 - Starting container with image: ghcr.io/all-hands-ai/runtime:d3242eb88218fde70c51b99b0f4be1a4 and name: openhands-sandbox-76d0a1b9-af12-4ee0-a2da-6d2d356c8849_14033e3b-7f7a-4524-9341-8161ab793712
+[92m17:57:22 - openhands:INFO[0m: runtime.py:204 - Mount dir: /workspace
+[92m17:57:22 - openhands:INFO[0m: runtime.py:238 - Container started. Server url: http://localhost:58509
+[92m17:57:22 - openhands:INFO[0m: runtime.py:157 - Container initialized with plugins: ['agent_skills', 'jupyter']
+[92m17:57:22 - openhands:INFO[0m: runtime.py:160 - Container initialized with env vars: None
+[92m17:57:22 - openhands:INFO[0m: agent.py:116 - Agents: {'agent': AgentConfig(micro_agent_name=None, memory_enabled=False, memory_max_threads=2, llm_config=None)}
+[92m17:57:22 - openhands:INFO[0m: agent.py:117 - Creating agent CodeActAgent using LLM openai/gpt-4o
+[92m17:57:22 - openhands:ERROR[0m: state.py:118 - Failed to restore state from session: sessions/76d0a1b9-af12-4ee0-a2da-6d2d356c8849/agent_state.pkl
+[92m17:57:22 - openhands:INFO[0m: agent.py:139 - Error restoring state: sessions/76d0a1b9-af12-4ee0-a2da-6d2d356c8849/agent_state.pkl
+[92m17:57:22 - openhands:INFO[0m: agent.py:140 - Agent controller initialized.
+[92m17:57:22 - openhands:INFO[0m: session.py:139 - Server event
+[92m17:57:22 - openhands:INFO[0m: agent_controller.py:150 - [Agent Controller 76d0a1b9-af12-4ee0-a2da-6d2d356c8849] Starting step loop...
+[92m17:57:22 - openhands:INFO[0m: session.py:139 - Server event
+[92m17:57:27 - openhands:INFO[0m: runtime.py:285 -
+------------------------------Container logs:------------------------------
+    |[92m17:57:27 - openhands:INFO[0m: client.py:692 - Starting action execution API on port 58509
+    |Starting action execution API on port 58509
+    |INFO:     Started server process [15]
+    |INFO:     Waiting for application startup.
+------------------------------------------------------------------------------------------
+[92m17:57:28 - openhands:INFO[0m: runtime.py:285 -
+------------------------------Container logs:------------------------------
+    |[92m17:57:27 - openhands:WARNING[0m: client.py:160 - UID 1000 is not unique. Incrementing UID and retrying...
+    |[92m17:57:28 - openhands:INFO[0m: browser_env.py:58 - Starting browser env...
+------------------------------------------------------------------------------------------
+[92m17:57:42 - openhands:INFO[0m: runtime.py:264 -
+------------------------------Container logs:------------------------------
+    |[92m17:57:33 - openhands:INFO[0m: browser_env.py:101 - Browser env started.
+    |[92m17:57:33 - openhands:INFO[0m: client.py:98 - Initializing plugin: agent_skills
+    |[92m17:57:33 - openhands:INFO[0m: __init__.py:49 - Jupyter kernel gateway started at port 43845. Output:
+    |[92m17:57:38 - openhands:INFO[0m: client.py:98 - Initializing plugin: jupyter
+    |[92m17:57:39 - openhands:INFO[0m: client.py:114 - AgentSkills initialized: **IPythonRunCellObservation**
+    |[Code executed successfully with no output]
+    |[Jupyter current working directory: /workspace]
+    |[Jupyter Python interpreter: /openhands/poetry/openhands-ai-5O4_aCHf-py3.11/bin/python]
+    |[92m17:57:39 - openhands:INFO[0m: client.py:197 - Initializing by running 1 bash commands...
+    |[92m17:57:39 - openhands:INFO[0m: client.py:208 - Bash init commands completed
+    |[92m17:57:39 - openhands:INFO[0m: client.py:485 - Runtime client initialized.
+    |INFO:     Application startup complete.
+    |INFO:     Uvicorn running on http://0.0.0.0:58509 (Press CTRL+C to quit)
+------------------------------------------------------------------------------------------
+INFO:     10.240.2.131:0 - "GET /api/list-files HTTP/1.1" 200 OK
+17:57:42 - USER_ACTION
+**MessageAction** (source=EventSource.USER)
+CONTENT: Hi can you help me clear the workspace
+[92m17:57:42 - openhands:INFO[0m: session.py:139 - Server event
+
+
+==============
+CodeActAgent LEVEL 0 LOCAL STEP 0 GLOBAL STEP 0
+
+[92m17:57:44 - openhands:INFO[0m: llm.py:529 - Cost: 0.02 USD | Accumulated Cost: 0.02 USD
+Input tokens: 3941
+Output tokens: 27
+
+17:57:44 - ACTION
+**CmdRunAction (source=EventSource.AGENT)**
+THOUGHT: Sure! Let's start by listing the files in the current workspace to identify what needs to be cleared.
+COMMAND:
+ls
+[92m17:57:44 - openhands:INFO[0m: runtime.py:360 - Awaiting session
+[92m17:57:44 - openhands:INFO[0m: runtime.py:264 -
+------------------------------Container logs:------------------------------
+    |INFO:     172.17.0.1:51228 - "GET /alive HTTP/1.1" 200 OK
+    |INFO:     172.17.0.1:51228 - "POST /list_files HTTP/1.1" 200 OK
+------------------------------------------------------------------------------------------
+[92m17:57:44 - openhands:INFO[0m: session.py:139 - Server event
+17:57:44 - OBSERVATION
+**CmdOutputObservation (source=EventSource.AGENT, exit code=0)**
+
+[Python Interpreter: /openhands/poetry/openhands-ai-5O4_aCHf-py3.11/bin/python]
+openhands@2872baa4c620:/workspace $
+[92m17:57:44 - openhands:INFO[0m: session.py:139 - Server event
+
+
+==============
+CodeActAgent LEVEL 0 LOCAL STEP 1 GLOBAL STEP 1
+
+[92m17:57:46 - openhands:INFO[0m: llm.py:529 - Cost: 0.02 USD | Accumulated Cost: 0.04 USD
+Input tokens: 4038
+Output tokens: 27
+
+17:57:46 - ACTION
+**CmdRunAction (source=EventSource.AGENT)**
+THOUGHT: Let's list the files in the `/workspace` directory to see what needs to be cleared.
+COMMAND:
+ls /workspace
+[92m17:57:46 - openhands:INFO[0m: runtime.py:360 - Awaiting session
+[92m17:57:46 - openhands:INFO[0m: runtime.py:264 -
+------------------------------Container logs:------------------------------
+    |INFO:     172.17.0.1:51228 - "GET /alive HTTP/1.1" 200 OK
+    |INFO:     172.17.0.1:51228 - "POST /execute_action HTTP/1.1" 200 OK
+------------------------------------------------------------------------------------------
+[92m17:57:46 - openhands:INFO[0m: session.py:139 - Server event
+17:57:46 - OBSERVATION
+**CmdOutputObservation (source=EventSource.AGENT, exit code=0)**
+
+[Python Interpreter: /openhands/poetry/openhands-ai-5O4_aCHf-py3.11/bin/python]
+openhands@2872baa4c620:/workspace $
+[92m17:57:46 - openhands:INFO[0m: session.py:139 - Server event
+[92m17:57:46 - openhands:INFO[0m: runtime.py:264 -
+------------------------------Container logs:------------------------------
+    |INFO:     172.17.0.1:51228 - "GET /alive HTTP/1.1" 200 OK
+    |INFO:     172.17.0.1:51228 - "POST /execute_action HTTP/1.1" 200 OK
+------------------------------------------------------------------------------------------
+
+
+==============
+CodeActAgent LEVEL 0 LOCAL STEP 2 GLOBAL STEP 2
+
+[92m17:57:48 - openhands:INFO[0m: llm.py:529 - Cost: 0.02 USD | Accumulated Cost: 0.06 USD
+Input tokens: 4136
+Output tokens: 37
+
+17:57:48 - ACTION
+**CmdRunAction (source=EventSource.AGENT)**
+THOUGHT: It seems the previous command did not return any output. Let's try listing the files again with more details to ensure we capture everything.
+COMMAND:
+ls -la /workspace
+[92m17:57:58 - openhands:INFO[0m: session.py:65 - WebSocket disconnected, sid: 76d0a1b9-af12-4ee0-a2da-6d2d356c8849
+INFO:     connection closed
+[92m17:57:58 - openhands:INFO[0m: runtime.py:360 - Awaiting session
+[92m17:57:58 - openhands:INFO[0m: runtime.py:264 -
+------------------------------Container logs:------------------------------
+    |INFO:     172.17.0.1:51228 - "GET /alive HTTP/1.1" 200 OK
+    |INFO:     172.17.0.1:51228 - "POST /list_files HTTP/1.1" 200 OK
+------------------------------------------------------------------------------------------
+make: *** [Makefile:216: run] Killed
+Killed

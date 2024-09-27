@@ -111,8 +111,8 @@ function Workspace() {
           classNames={{
             base: "w-full",
             tabList:
-              "w-full relative rounded-none bg-neutral-900 p-0 gap-0 h-[36px] flex",
-            tab: "rounded-none border-neutral-600 data-[selected=true]:bg-neutral-800 justify-start",
+              "w-full relative rounded-none bg-black p-0 gap-0 h-[36px] flex",
+            tab: "rounded-none border-neutral-600 data-[selected=true]:bg-black justify-start",
             tabContent: "group-data-[selected=true]:text-white",
           }}
           size="lg"
@@ -130,7 +130,7 @@ function Workspace() {
                   {tabData[tab].icon}
                   <span>{tabData[tab].name}</span>
                   {changes[tab] && (
-                    <div className="w-2 h-2 rounded-full animate-pulse bg-blue-500" />
+                    <div className="w-2 h-2 rounded-full animate-pulse bg-black" />
                   )}
                 </div>
               }
@@ -138,7 +138,7 @@ function Workspace() {
           ))}
         </Tabs>
       </div>
-      <div className="grow w-full bg-neutral-800 flex min-h-0">
+      <div className="grow w-full bg-black flex min-h-0">
         {tabData[activeTab as TabType].component}
       </div>
     </div>

@@ -44,7 +44,7 @@ function BaseModal({
       backdrop="blur"
       hideCloseButton
       size="sm"
-      className="bg-neutral-900 rounded-lg"
+      className="bg-black rounded-lg"
     >
       <ModalContent className={contentClassName}>
         {(closeModal) => (

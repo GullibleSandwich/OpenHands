@@ -90,7 +90,7 @@ function ChatInput({ disabled = false, onSendMessage }: ChatInputProps) {
         onPaste={handlePaste}
         className="pb-3 px-3"
         classNames={{
-          inputWrapper: "bg-neutral-700 border border-neutral-600 rounded-lg",
+          inputWrapper: "bg-black border border-neutral-600 rounded-lg",
           input: "pr-16 text-neutral-400",
         }}
         maxRows={10}

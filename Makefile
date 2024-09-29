@@ -2,8 +2,9 @@ SHELL=/bin/bash
 # Makefile for OpenHands project
 
 # Variables
+BACKEND_HOST ?= "127.0.0.1"
 BACKEND_PORT = 3000
-BACKEND_HOST = "127.0.0.1:$(BACKEND_PORT)"
+BACKEND_HOST_PORT = "$(BACKEND_HOST):$(BACKEND_PORT)"
 FRONTEND_PORT = 3001
 DEFAULT_WORKSPACE_DIR = "./workspace"
 DEFAULT_MODEL = "gpt-4o"
@@ -138,11 +139,11 @@ install-python-dependencies:
 		poetry run pip install playwright; \
 		poetry run playwright install chromium; \
 	else \
-		if [ ! -f cache/playwright_chromium_is_installed.txt ]; then \
+		if [ ! -f /tmp/cache/playwright_chromium_is_installed.txt ]; then \
 			echo "Running playwright install --with-deps chromium..."; \
 			poetry run playwright install --with-deps chromium; \
-			mkdir -p cache; \
-			touch cache/playwright_chromium_is_installed.txt; \
+			mkdir -p /tmp/cache; \
+			touch /tmp/cache/playwright_chromium_is_installed.txt; \
 		else \
 			echo "Setup already done. Skipping playwright installation."; \
 		fi \
@@ -157,11 +158,7 @@ install-frontend-dependencies:
 	@cd frontend && npm install
 	@echo "$(GREEN)Frontend dependencies installed successfully.$(RESET)"
 
-install-pre-commit-hooks:
-	@echo "$(YELLOW)Installing pre-commit hooks...$(RESET)"
-	@git config --unset-all core.hooksPath || true
-	@poetry run pre-commit install --config $(PRE_COMMIT_CONFIG_PATH)
-	@echo "$(GREEN)Pre-commit hooks installed successfully.$(RESET)"
+
 
 lint-backend:
 	@echo "$(YELLOW)Running linters...$(RESET)"
@@ -189,12 +186,12 @@ build-frontend:
 # Start backend
 start-backend:
 	@echo "$(YELLOW)Starting backend...$(RESET)"
-	@poetry run uvicorn openhands.server.listen:app --port $(BACKEND_PORT) --reload --reload-exclude "workspace/*"
+	@poetry run uvicorn openhands.server.listen:app --host $(BACKEND_HOST) --port $(BACKEND_PORT) --reload --reload-exclude "$(shell pwd)/workspace"
 
 # Start frontend
 start-frontend:
 	@echo "$(YELLOW)Starting frontend...$(RESET)"
-	@cd frontend && VITE_BACKEND_HOST=$(BACKEND_HOST) VITE_FRONTEND_PORT=$(FRONTEND_PORT) npm run start
+	@cd frontend && VITE_BACKEND_HOST=$(BACKEND_HOST_PORT) VITE_FRONTEND_PORT=$(FRONTEND_PORT) npm run start
 
 # Common setup for running the app (non-callable)
 _run_setup:
@@ -204,7 +201,7 @@ _run_setup:
 	fi
 	@mkdir -p logs
 	@echo "$(YELLOW)Starting backend server...$(RESET)"
-	@poetry run uvicorn openhands.server.listen:app --port $(BACKEND_PORT) &
+	@poetry run uvicorn openhands.server.listen:app --host $(BACKEND_HOST) --port $(BACKEND_PORT) &
 	@echo "$(YELLOW)Waiting for the backend to start...$(RESET)"
 	@until nc -z localhost $(BACKEND_PORT); do sleep 0.1; done
 	@echo "$(GREEN)Backend started successfully.$(RESET)"
@@ -215,6 +212,20 @@ run:
 	@$(MAKE) -s _run_setup
 	@cd frontend && echo "$(BLUE)Starting frontend with npm...$(RESET)" && npm run start -- --port $(FRONTEND_PORT)
 	@echo "$(GREEN)Application started successfully.$(RESET)"
+
+# Run the app (in docker)
+docker-run: WORKSPACE_BASE ?= $(PWD)/workspace
+docker-run:
+	@if [ -f /.dockerenv ]; then \
+		echo "Running inside a Docker container. Exiting..."; \
+		exit 0; \
+	else \
+		echo "$(YELLOW)Running the app in Docker $(OPTIONS)...$(RESET)"; \
+		export WORKSPACE_BASE=${WORKSPACE_BASE}; \
+		export SANDBOX_USER_ID=$(shell id -u); \
+		export DATE=$(shell date +%Y%m%d%H%M%S); \
+		docker compose up $(OPTIONS); \
+	fi
 
 # Run the app (WSL mode)
 run-wsl:
@@ -280,6 +291,16 @@ setup-config-prompts:
 		fi
 
 
+# Develop in container
+docker-dev:
+	@if [ -f /.dockerenv ]; then \
+		echo "Running inside a Docker container. Exiting..."; \
+		exit 0; \
+	else \
+		echo "$(YELLOW)Build and run in Docker $(OPTIONS)...$(RESET)"; \
+		./containers/dev/dev.sh $(OPTIONS); \
+	fi
+
 # Clean up all caches
 clean:
 	@echo "$(YELLOW)Cleaning up caches...$(RESET)"
@@ -298,7 +319,10 @@ help:
 	@echo "  $(GREEN)start-frontend$(RESET)      - Start the frontend server for the OpenHands project."
 	@echo "  $(GREEN)run$(RESET)                 - Run the OpenHands application, starting both backend and frontend servers."
 	@echo "                        Backend Log file will be stored in the 'logs' directory."
+	@echo "  $(GREEN)docker-dev$(RESET)          - Build and run the OpenHands application in Docker."
+	@echo "  $(GREEN)docker-run$(RESET)          - Run the OpenHands application, starting both backend and frontend servers in Docker."
 	@echo "  $(GREEN)help$(RESET)                - Display this help message, providing information on available targets."
 
 # Phony targets
 .PHONY: build check-dependencies check-python check-npm check-docker check-poetry install-python-dependencies install-frontend-dependencies install-pre-commit-hooks lint start-backend start-frontend run run-wsl setup-config setup-config-prompts help
+.PHONY: docker-dev docker-run

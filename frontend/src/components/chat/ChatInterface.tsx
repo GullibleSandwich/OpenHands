@@ -131,12 +131,12 @@ function ChatInterface() {
         {feedbackShared !== messages.length && messages.length > 3 && (
           <div className="flex justify-start gap-2 p-2">
             <ScrollButton
-              onClick={() => shareFeedback("positive")}
+              onClick={() => window.location.href = "https://forms.gle/stTNV5nDX8M9HnSP8"}
               icon={<FaRegThumbsUp className="inline mr-2 w-3 h-3" />}
               label=""
             />
             <ScrollButton
-              onClick={() => shareFeedback("negative")}
+              onClick={() => window.location.href = "https://forms.gle/stTNV5nDX8M9HnSP8"}
               icon={<FaRegThumbsDown className="inline mr-2 w-3 h-3" />}
               label=""
             />

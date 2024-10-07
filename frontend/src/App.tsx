@@ -2,6 +2,8 @@ import { useDisclosure } from "@nextui-org/react";
 import React, { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { IoLockClosed } from "react-icons/io5";
+import { Amplify } from "aws-amplify";
+import { withAuthenticator } from "@aws-amplify/ui-react";
 import CogTooth from "#/assets/cog-tooth";
 import ChatInterface from "#/components/chat/ChatInterface";
 import Errors from "#/components/Errors";
@@ -13,12 +15,22 @@ import "./App.css";
 import AgentControlBar from "./components/AgentControlBar";
 import AgentStatusBar from "./components/AgentStatusBar";
 import VolumeIcon from "./components/VolumeIcon";
-import Terminal from "./components/terminal/Terminal";
+// import Terminal from "./components/terminal/Terminal";
 import Session from "#/services/session";
 import { getToken } from "#/services/auth";
 import { getSettings, settingsAreUpToDate } from "#/services/settings";
 import Security from "./components/modals/security/Security";
+import amplifyconfig from "./amplifyconfiguration.json";
+import "@aws-amplify/ui-react/styles.css";
 
+Amplify.configure(amplifyconfig);
+// import { type AuthUser } from "aws-amplify/auth";
+// import { type UseAuthenticator } from "@aws-amplify/ui-react-core";
+
+// type AppProps = {
+//   signOut?: UseAuthenticator["signOut"]; //() => void;
+//   user?: AuthUser;
+// };
 interface Props {
   setSettingOpen: (isOpen: boolean) => void;
   setSecurityOpen: (isOpen: boolean) => void;
@@ -146,4 +158,4 @@ function App(): JSX.Element {
   );
 }
 
-export default App;
+export default withAuthenticator(App);

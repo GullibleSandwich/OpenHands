@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-curioai-dev-ca2f4-authRole",
+      "UnauthRoleArn": "arn:aws:iam::637423377699:role/amplify-curioai-dev-ca2f4-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::637423377699:role/amplify-curioai-dev-ca2f4-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-curioai-dev-ca2f4-deployment",
+      "UnauthRoleName": "amplify-curioai-dev-ca2f4-unauthRole",
+      "StackName": "amplify-curioai-dev-ca2f4",
+      "StackId": "arn:aws:cloudformation:us-west-1:637423377699:stack/amplify-curioai-dev-ca2f4/a0da1650-83ae-11ef-b13c-025a3f1f1c05",
+      "AmplifyAppId": "dht3nwyb7zbb5"
+    },
+    "categories": {
+      "auth": {
+        "curioaie63c50ec": {}
+      }
+    }
+  }
+}

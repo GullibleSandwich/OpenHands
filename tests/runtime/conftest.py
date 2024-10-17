@@ -4,13 +4,13 @@ import time
 import pytest
 from pytest import TempPathFactory
 
-from openhands.core.config import AppConfig, SandboxConfig, load_from_env
-from openhands.events import EventStream
-from openhands.runtime.client.runtime import EventStreamRuntime
-from openhands.runtime.plugins import AgentSkillsRequirement, JupyterRequirement
-from openhands.runtime.remote.runtime import RemoteRuntime
-from openhands.runtime.runtime import Runtime
-from openhands.storage import get_file_store
+from curio.core.config import AppConfig, SandboxConfig, load_from_env
+from curio.events import EventStream
+from curio.runtime.client.runtime import EventStreamRuntime
+from curio.runtime.plugins import AgentSkillsRequirement, JupyterRequirement
+from curio.runtime.remote.runtime import RemoteRuntime
+from curio.runtime.runtime import Runtime
+from curio.storage import get_file_store
 
 
 @pytest.fixture(autouse=True)

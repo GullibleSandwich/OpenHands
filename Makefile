@@ -6,7 +6,7 @@ BACKEND_HOST ?= "127.0.0.1"
 BACKEND_PORT = 3000
 BACKEND_HOST_PORT = "$(BACKEND_HOST):$(BACKEND_PORT)"
 FRONTEND_PORT = 3001
-DEFAULT_WORKSPACE_DIR = "./workspace"
+DEFAULT_WORKSPACE_DIR = "/tmp/workspace"
 DEFAULT_MODEL = "gpt-4o"
 CONFIG_FILE = config.toml
 PRE_COMMIT_CONFIG_PATH = "./dev_config/python/.pre-commit-config.yaml"
@@ -162,7 +162,7 @@ install-frontend-dependencies:
 
 lint-backend:
 	@echo "$(YELLOW)Running linters...$(RESET)"
-	@poetry run pre-commit run --files openhands/**/* agenthub/**/* evaluation/**/* --show-diff-on-failure --config $(PRE_COMMIT_CONFIG_PATH)
+	@poetry run pre-commit run --files curio/**/* agenthub/**/* evaluation/**/* --show-diff-on-failure --config $(PRE_COMMIT_CONFIG_PATH)
 
 lint-frontend:
 	@echo "$(YELLOW)Running linters for frontend...$(RESET)"
@@ -186,7 +186,7 @@ build-frontend:
 # Start backend
 start-backend:
 	@echo "$(YELLOW)Starting backend...$(RESET)"
-	@poetry run uvicorn openhands.server.listen:app --host $(BACKEND_HOST) --port $(BACKEND_PORT) --reload --reload-exclude "$(shell pwd)/workspace"
+	@poetry run uvicorn curio.server.listen:app --host $(BACKEND_HOST) --port $(BACKEND_PORT) --reload --reload-exclude "/tmp/workspace"
 
 # Start frontend
 start-frontend:
@@ -201,7 +201,7 @@ _run_setup:
 	fi
 	@mkdir -p logs
 	@echo "$(YELLOW)Starting backend server...$(RESET)"
-	@poetry run uvicorn openhands.server.listen:app --host $(BACKEND_HOST) --port $(BACKEND_PORT) &
+	@poetry run uvicorn curio.server.listen:app --host $(BACKEND_HOST) --port $(BACKEND_PORT) &
 	@echo "$(YELLOW)Waiting for the backend to start...$(RESET)"
 	@until nc -z localhost $(BACKEND_PORT); do sleep 0.1; done
 	@echo "$(GREEN)Backend started successfully.$(RESET)"
@@ -214,7 +214,7 @@ run:
 	@echo "$(GREEN)Application started successfully.$(RESET)"
 
 # Run the app (in docker)
-docker-run: WORKSPACE_BASE ?= $(PWD)/workspace
+docker-run: WORKSPACE_BASE ?= /tmp/workspace
 docker-run:
 	@if [ -f /.dockerenv ]; then \
 		echo "Running inside a Docker container. Exiting..."; \
@@ -304,7 +304,7 @@ docker-dev:
 # Clean up all caches
 clean:
 	@echo "$(YELLOW)Cleaning up caches...$(RESET)"
-	@rm -rf openhands/.cache
+	@rm -rf curio/.cache
 	@echo "$(GREEN)Caches cleaned up successfully.$(RESET)"
 
 # Help

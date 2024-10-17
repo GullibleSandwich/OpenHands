@@ -7,7 +7,7 @@ import pytest
 import toml
 from pytest import TempPathFactory
 
-from openhands.runtime.utils.runtime_build import (
+from curio.runtime.utils.runtime_build import (
     _generate_dockerfile,
     _get_package_version,
     _put_source_code_to_dir,
@@ -241,7 +241,7 @@ def test_build_runtime_image_exact_hash_exist(temp_dir):
     mock_runtime_builder.build.assert_not_called()
 
 
-@patch('openhands.runtime.utils.runtime_build._build_sandbox_image')
+@patch('curio.runtime.utils.runtime_build._build_sandbox_image')
 def test_build_runtime_image_exact_hash_not_exist(mock_build_sandbox_image, temp_dir):
     base_image = 'debian:11'
     repo, latest_image_tag = get_runtime_image_repo_and_tag(base_image)
@@ -264,7 +264,7 @@ def test_build_runtime_image_exact_hash_not_exist(mock_build_sandbox_image, temp
     mock_runtime_builder.image_exists.side_effect = [False, True]
 
     with patch(
-        'openhands.runtime.utils.runtime_build.prep_docker_build_folder'
+        'curio.runtime.utils.runtime_build.prep_docker_build_folder'
     ) as mock_prep_docker_build_folder:
         mock_prep_docker_build_folder.side_effect = [
             from_scratch_hash,

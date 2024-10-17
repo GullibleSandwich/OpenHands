@@ -1,8 +1,8 @@
-from openhands.events.observation import (
+from curio.events.observation import (
     CmdOutputObservation,
     Observation,
 )
-from openhands.events.serialization import (
+from curio.events.serialization import (
     event_from_dict,
     event_to_dict,
     event_to_memory,

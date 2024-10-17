@@ -9,10 +9,10 @@ from typing import Dict, List, Optional
 from unittest import TestCase
 from unittest.mock import patch
 
-from openhands.storage.files import FileStore
-from openhands.storage.google_cloud import GoogleCloudFileStore
-from openhands.storage.local import LocalFileStore
-from openhands.storage.memory import InMemoryFileStore
+from curio.storage.files import FileStore
+from curio.storage.google_cloud import GoogleCloudFileStore
+from curio.storage.local import LocalFileStore
+from curio.storage.memory import InMemoryFileStore
 
 
 class _StorageTest(ABC):

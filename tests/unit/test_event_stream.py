@@ -3,12 +3,12 @@ import json
 import pytest
 from pytest import TempPathFactory
 
-from openhands.events import EventSource, EventStream
-from openhands.events.action import (
+from curio.events import EventSource, EventStream
+from curio.events.action import (
     NullAction,
 )
-from openhands.events.observation import NullObservation
-from openhands.storage import get_file_store
+from curio.events.observation import NullObservation
+from curio.storage import get_file_store
 
 
 @pytest.fixture

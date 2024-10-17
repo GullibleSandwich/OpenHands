@@ -1,9 +1,9 @@
-from openhands.controller.agent import Agent
-from openhands.controller.state.state import State
-from openhands.core.config import AgentConfig
-from openhands.events.action import Action, AgentDelegateAction, AgentFinishAction
-from openhands.events.observation import AgentDelegateObservation
-from openhands.llm.llm import LLM
+from curio.controller.agent import Agent
+from curio.controller.state.state import State
+from curio.core.config import AgentConfig
+from curio.events.action import Action, AgentDelegateAction, AgentFinishAction
+from curio.events.observation import AgentDelegateObservation
+from curio.llm.llm import LLM
 
 
 class DelegatorAgent(Agent):

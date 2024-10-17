@@ -56,24 +56,24 @@ RUN useradd -l -m -u $OPENHANDS_USER_ID -s /bin/bash openhands && \
     usermod -aG app openhands && \
     usermod -aG sudo openhands && \
     echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-RUN chown -R openhands:app /app && chmod -R 770 /app
-RUN sudo chown -R openhands:app $WORKSPACE_BASE && sudo chmod -R 770 $WORKSPACE_BASE
-USER openhands
+RUN chown -R curio:app /app && chmod -R 770 /app
+RUN sudo chown -R curio:app $WORKSPACE_BASE && sudo chmod -R 770 $WORKSPACE_BASE
+USER curio
 
 ENV VIRTUAL_ENV=/app/.venv \
     PATH="/app/.venv/bin:$PATH" \
     PYTHONPATH='/app'
 
-COPY --chown=openhands:app --chmod=770 --from=backend-builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
+COPY --chown=curio:app --chmod=770 --from=backend-builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 RUN playwright install --with-deps chromium
 
-COPY --chown=openhands:app --chmod=770 ./openhands ./openhands
-COPY --chown=openhands:app --chmod=777 ./openhands/runtime/plugins ./openhands/runtime/plugins
-COPY --chown=openhands:app --chmod=770 ./agenthub ./agenthub
-COPY --chown=openhands:app --chmod=770 ./pyproject.toml ./pyproject.toml
-COPY --chown=openhands:app --chmod=770 ./poetry.lock ./poetry.lock
-COPY --chown=openhands:app --chmod=770 ./README.md ./README.md
-COPY --chown=openhands:app --chmod=770 ./MANIFEST.in ./MANIFEST.in
+COPY --chown=curio:app --chmod=770 ./curio ./curio
+COPY --chown=curio:app --chmod=777 ./curio/runtime/plugins ./curio/runtime/plugins
+COPY --chown=curio:app --chmod=770 ./agenthub ./agenthub
+COPY --chown=curio:app --chmod=770 ./pyproject.toml ./pyproject.toml
+COPY --chown=curio:app --chmod=770 ./poetry.lock ./poetry.lock
+COPY --chown=curio:app --chmod=770 ./README.md ./README.md
+COPY --chown=curio:app --chmod=770 ./MANIFEST.in ./MANIFEST.in
 
 # This is run as "openhands" user, and will create __pycache__ with openhands:openhands ownership
 RUN python openhands/core/download.py # No-op to download assets
@@ -89,4 +89,4 @@ USER root
 WORKDIR /app
 
 ENTRYPOINT ["/app/entrypoint.sh"]
-CMD ["uvicorn", "openhands.server.listen:app", "--host", "0.0.0.0", "--port", "3000"]
+CMD ["uvicorn", "curio.server.listen:app", "--host", "0.0.0.0", "--port", "3000"]

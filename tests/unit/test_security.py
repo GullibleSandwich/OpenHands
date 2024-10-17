@@ -4,9 +4,9 @@ import tempfile
 
 import pytest
 
-from openhands.core.schema.action import ActionType
-from openhands.core.schema.agent import AgentState
-from openhands.events.action import (
+from curio.core.schema.action import ActionType
+from curio.core.schema.agent import AgentState
+from curio.events.action import (
     AgentDelegateAction,
     AgentFinishAction,
     BrowseInteractiveAction,
@@ -17,9 +17,9 @@ from openhands.events.action import (
     MessageAction,
     NullAction,
 )
-from openhands.events.action.action import ActionConfirmationStatus, ActionSecurityRisk
-from openhands.events.event import Event
-from openhands.events.observation import (
+from curio.events.action.action import ActionConfirmationStatus, ActionSecurityRisk
+from curio.events.event import Event
+from curio.events.observation import (
     AgentDelegateObservation,
     AgentStateChangedObservation,
     BrowserOutputObservation,
@@ -27,11 +27,11 @@ from openhands.events.observation import (
     IPythonRunCellObservation,
     NullObservation,
 )
-from openhands.events.stream import EventSource, EventStream
-from openhands.security.invariant import InvariantAnalyzer
-from openhands.security.invariant.nodes import Function, Message, ToolCall, ToolOutput
-from openhands.security.invariant.parser import parse_action, parse_observation
-from openhands.storage import get_file_store
+from curio.events.stream import EventSource, EventStream
+from curio.security.invariant import InvariantAnalyzer
+from curio.security.invariant.nodes import Function, Message, ToolCall, ToolOutput
+from curio.security.invariant.parser import parse_action, parse_observation
+from curio.storage import get_file_store
 
 
 @pytest.fixture

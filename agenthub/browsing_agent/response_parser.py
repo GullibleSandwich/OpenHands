@@ -1,8 +1,8 @@
 import ast
 
-from openhands.controller.action_parser import ActionParser, ResponseParser
-from openhands.core.logger import openhands_logger as logger
-from openhands.events.action import (
+from curio.controller.action_parser import ActionParser, ResponseParser
+from curio.core.logger import openhands_logger as logger
+from curio.events.action import (
     Action,
     BrowseInteractiveAction,
 )

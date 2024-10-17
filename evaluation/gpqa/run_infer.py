@@ -33,21 +33,21 @@ from evaluation.utils.shared import (
     reset_logger_for_multiprocessing,
     run_evaluation,
 )
-from openhands.controller.state.state import State
-from openhands.core.config import (
+from curio.controller.state.state import State
+from curio.core.config import (
     AppConfig,
     SandboxConfig,
     get_llm_config_arg,
     get_parser,
 )
-from openhands.core.logger import openhands_logger as logger
-from openhands.core.main import create_runtime, run_controller
-from openhands.events.action import (
+from curio.core.logger import openhands_logger as logger
+from curio.core.main import create_runtime, run_controller
+from curio.events.action import (
     Action,
     AgentFinishAction,
     MessageAction,
 )
-from openhands.events.observation import Observation
+from curio.events.observation import Observation
 
 ACTION_FORMAT = """
 <<FINAL_ANSWER||

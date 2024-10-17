@@ -2,16 +2,16 @@ from jinja2 import BaseLoader, Environment
 
 from agenthub.micro.instructions import instructions
 from agenthub.micro.registry import all_microagents
-from openhands.controller.agent import Agent
-from openhands.controller.state.state import State
-from openhands.core.config import AgentConfig
-from openhands.core.message import ImageContent, Message, TextContent
-from openhands.core.utils import json
-from openhands.events.action import Action
-from openhands.events.serialization.action import action_from_dict
-from openhands.events.serialization.event import event_to_memory
-from openhands.llm.llm import LLM
-from openhands.memory.history import ShortTermHistory
+from curio.controller.agent import Agent
+from curio.controller.state.state import State
+from curio.core.config import AgentConfig
+from curio.core.message import ImageContent, Message, TextContent
+from curio.core.utils import json
+from curio.events.action import Action
+from curio.events.serialization.action import action_from_dict
+from curio.events.serialization.event import event_to_memory
+from curio.llm.llm import LLM
+from curio.memory.history import ShortTermHistory
 
 
 def parse_response(orig_response: str) -> Action:

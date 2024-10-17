@@ -3,9 +3,9 @@ from unittest.mock import AsyncMock, patch
 
 import pytest
 
-from openhands.core.config import load_app_config
-from openhands.core.exceptions import UserCancelledError
-from openhands.llm.llm import LLM
+from curio.core.config import load_app_config
+from curio.core.exceptions import UserCancelledError
+from curio.llm.llm import LLM
 
 config = load_app_config()
 

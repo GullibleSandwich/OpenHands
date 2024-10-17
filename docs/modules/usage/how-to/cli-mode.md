@@ -13,7 +13,7 @@ To start an interactive OpenHands session via the command line, follow these ste
 2. Run the following command:
 
 ```bash
-poetry run python -m openhands.core.cli
+poetry run python -m curio.core.cli
 ```
 
 This command will start an interactive session where you can input tasks and receive responses from OpenHands.
@@ -58,7 +58,7 @@ docker run -it \
     --add-host host.docker.internal:host-gateway \
     --name openhands-app-$(date +%Y%m%d%H%M%S) \
     ghcr.io/all-hands-ai/openhands:0.9 \
-    python -m openhands.core.cli
+    python -m curio.core.cli
 ```
 
 This command will start an interactive session in Docker where you can input tasks and receive responses from OpenHands.

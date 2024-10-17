@@ -5,17 +5,17 @@ import subprocess
 
 import pytest
 
-from openhands.controller.state.state import State
-from openhands.core.config import AppConfig, SandboxConfig, load_from_env
-from openhands.core.main import run_controller
-from openhands.core.schema import AgentState
-from openhands.events.action import (
+from curio.controller.state.state import State
+from curio.core.config import AppConfig, SandboxConfig, load_from_env
+from curio.core.main import run_controller
+from curio.core.schema import AgentState
+from curio.events.action import (
     AgentFinishAction,
     AgentRejectAction,
 )
-from openhands.events.observation.browse import BrowserOutputObservation
-from openhands.events.observation.delegate import AgentDelegateObservation
-from openhands.runtime import get_runtime_cls
+from curio.events.observation.browse import BrowserOutputObservation
+from curio.events.observation.delegate import AgentDelegateObservation
+from curio.runtime import get_runtime_cls
 
 TEST_RUNTIME = os.getenv('TEST_RUNTIME')
 assert TEST_RUNTIME in ['eventstream', 'remote']

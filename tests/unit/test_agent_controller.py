@@ -3,13 +3,13 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from openhands.controller.agent import Agent
-from openhands.controller.agent_controller import AgentController
-from openhands.controller.state.state import TrafficControlState
-from openhands.core.exceptions import LLMMalformedActionError
-from openhands.core.schema import AgentState
-from openhands.events import EventStream
-from openhands.events.action import ChangeAgentStateAction, MessageAction
+from curio.controller.agent import Agent
+from curio.controller.agent_controller import AgentController
+from curio.controller.state.state import TrafficControlState
+from curio.core.exceptions import LLMMalformedActionError
+from curio.core.schema import AgentState
+from curio.events import EventStream
+from curio.events.action import ChangeAgentStateAction, MessageAction
 
 
 @pytest.fixture

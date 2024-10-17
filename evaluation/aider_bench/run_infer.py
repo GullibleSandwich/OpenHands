@@ -19,18 +19,18 @@ from evaluation.utils.shared import (
     reset_logger_for_multiprocessing,
     run_evaluation,
 )
-from openhands.controller.state.state import State
-from openhands.core.config import (
+from curio.controller.state.state import State
+from curio.core.config import (
     AppConfig,
     SandboxConfig,
     get_llm_config_arg,
     parse_arguments,
 )
-from openhands.core.logger import openhands_logger as logger
-from openhands.core.main import create_runtime, run_controller
-from openhands.events.action import CmdRunAction
-from openhands.events.observation import CmdOutputObservation
-from openhands.runtime.runtime import Runtime
+from curio.core.logger import openhands_logger as logger
+from curio.core.main import create_runtime, run_controller
+from curio.events.action import CmdRunAction
+from curio.events.observation import CmdOutputObservation
+from curio.runtime.runtime import Runtime
 
 # Configure visibility of unit tests to the Agent.
 USE_UNIT_TESTS = os.environ.get('USE_UNIT_TESTS', 'false').lower() == 'true'
@@ -74,12 +74,12 @@ def initialize_runtime(
     obs: CmdOutputObservation
 
     # Set instance id
-    action = CmdRunAction(command='mkdir -p /workspace')
+    action = CmdRunAction(command='mkdir -p /tmp/workspace')
     logger.info(action, extra={'msg_type': 'ACTION'})
     obs = runtime.run_action(action)
     assert obs.exit_code == 0
 
-    action = CmdRunAction(command='cd /workspace')
+    action = CmdRunAction(command='cd /tmp/workspace')
     logger.info(action, extra={'msg_type': 'ACTION'})
     obs = runtime.run_action(action)
     assert obs.exit_code == 0
@@ -90,7 +90,7 @@ def initialize_runtime(
             f.write(instance.signature)
         runtime.copy_to(
             file_path,
-            '/workspace',
+            '/tmp/workspace',
         )
         if USE_UNIT_TESTS:
             file_path = os.path.join(tmpdir, f'{instance.instance_name}_test.py')
@@ -98,7 +98,7 @@ def initialize_runtime(
                 f.write(instance.test)
             runtime.copy_to(
                 file_path,
-                '/workspace',
+                '/tmp/workspace',
             )
     logger.info(f"\n{'-' * 50} END Runtime Initialization Fn {'-' * 50}\n")
 
@@ -124,7 +124,7 @@ def complete_runtime(
             f.write(instance.test)
         runtime.copy_to(
             file_path,
-            '/workspace',
+            '/tmp/workspace',
         )
         logger.info(f'Running test file: {script_name}')
 

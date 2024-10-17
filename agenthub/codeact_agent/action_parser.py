@@ -1,7 +1,7 @@
 import re
 
-from openhands.controller.action_parser import ActionParser, ResponseParser
-from openhands.events.action import (
+from curio.controller.action_parser import ActionParser, ResponseParser
+from curio.events.action import (
     Action,
     AgentDelegateAction,
     AgentFinishAction,

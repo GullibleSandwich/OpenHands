@@ -1,13 +1,13 @@
-from openhands.controller.state.state import State
-from openhands.core.logger import openhands_logger as logger
-from openhands.core.schema import ActionType
-from openhands.core.utils import json
-from openhands.events.action import (
+from curio.controller.state.state import State
+from curio.core.logger import openhands_logger as logger
+from curio.core.schema import ActionType
+from curio.core.utils import json
+from curio.events.action import (
     Action,
     NullAction,
 )
-from openhands.events.serialization.action import action_from_dict
-from openhands.events.serialization.event import event_to_memory
+from curio.events.serialization.action import action_from_dict
+from curio.events.serialization.event import event_to_memory
 
 HISTORY_SIZE = 20
 

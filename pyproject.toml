@@ -9,7 +9,7 @@ repository = "https://github.com/All-Hands-AI/OpenHands"
 include = ["poetry.lock"]
 packages = [
   { include = "agenthub/**/*" },
-  { include = "openhands/**/*" }
+  { include = "curio/**/*" }
 ]
 
 [tool.poetry.dependencies]

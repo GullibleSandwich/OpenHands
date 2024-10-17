@@ -11,8 +11,8 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 import pytest
 from litellm import completion
 
-from openhands.core.message import format_messages
-from openhands.llm.llm import message_separator
+from curio.core.message import format_messages
+from curio.llm.llm import message_separator
 
 script_dir = os.environ.get('SCRIPT_DIR')
 project_root = os.environ.get('PROJECT_ROOT')
@@ -212,19 +212,19 @@ def patch_completion(monkeypatch, request):
     test_name = request.node.name
     # Mock LLM completion
     monkeypatch.setattr(
-        'openhands.llm.llm.litellm_completion',
+        'curio.llm.llm.litellm_completion',
         partial(mock_completion, test_name=test_name),
     )
 
     # Mock LLM completion cost (1 USD per conversation)
     monkeypatch.setattr(
-        'openhands.llm.llm.litellm_completion_cost',
+        'curio.llm.llm.litellm_completion_cost',
         lambda completion_response, **extra_kwargs: 1,
     )
 
     # Mock LLMConfig to disable vision support
     monkeypatch.setattr(
-        'openhands.llm.llm.LLM.vision_is_active',
+        'curio.llm.llm.LLM.vision_is_active',
         lambda self: False,
     )
 

@@ -2,12 +2,12 @@ import os
 from itertools import islice
 
 from agenthub.codeact_agent.action_parser import CodeActResponseParser
-from openhands.controller.agent import Agent
-from openhands.controller.state.state import State
-from openhands.core.config import AgentConfig
-from openhands.core.logger import openhands_logger as logger
-from openhands.core.message import ImageContent, Message, TextContent
-from openhands.events.action import (
+from curio.controller.agent import Agent
+from curio.controller.state.state import State
+from curio.core.config import AgentConfig
+from curio.core.logger import openhands_logger as logger
+from curio.core.message import ImageContent, Message, TextContent
+from curio.events.action import (
     Action,
     AgentDelegateAction,
     AgentFinishAction,
@@ -15,23 +15,23 @@ from openhands.events.action import (
     IPythonRunCellAction,
     MessageAction,
 )
-from openhands.events.observation import (
+from curio.events.observation import (
     AgentDelegateObservation,
     CmdOutputObservation,
     IPythonRunCellObservation,
     UserRejectObservation,
 )
-from openhands.events.observation.error import ErrorObservation
-from openhands.events.observation.observation import Observation
-from openhands.events.serialization.event import truncate_content
-from openhands.llm.llm import LLM
-from openhands.runtime.plugins import (
+from curio.events.observation.error import ErrorObservation
+from curio.events.observation.observation import Observation
+from curio.events.serialization.event import truncate_content
+from curio.llm.llm import LLM
+from curio.runtime.plugins import (
     AgentSkillsRequirement,
     JupyterRequirement,
     PluginRequirement,
 )
-from openhands.utils.microagent import MicroAgent
-from openhands.utils.prompt import PromptManager
+from curio.utils.microagent import MicroAgent
+from curio.utils.prompt import PromptManager
 
 
 class CodeActAgent(Agent):

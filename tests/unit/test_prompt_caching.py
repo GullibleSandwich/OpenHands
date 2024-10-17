@@ -3,12 +3,12 @@ from unittest.mock import MagicMock, Mock, patch
 import pytest
 
 from agenthub.codeact_agent.codeact_agent import CodeActAgent
-from openhands.core.config import AgentConfig, LLMConfig
-from openhands.events import EventSource, EventStream
-from openhands.events.action import CmdRunAction, MessageAction
-from openhands.events.observation import CmdOutputObservation
-from openhands.llm.llm import LLM
-from openhands.storage import get_file_store
+from curio.core.config import AgentConfig, LLMConfig
+from curio.events import EventSource, EventStream
+from curio.events.action import CmdRunAction, MessageAction
+from curio.events.observation import CmdOutputObservation
+from curio.llm.llm import LLM
+from curio.storage import get_file_store
 
 
 @pytest.fixture
@@ -208,7 +208,7 @@ def test_prompt_caching_headers(codeact_agent, mock_event_stream):
         return mock_response
 
     # Use patch to replace litellm_completion with our check_headers function
-    with patch('openhands.llm.llm.litellm_completion', side_effect=check_headers):
+    with patch('curio.llm.llm.litellm_completion', side_effect=check_headers):
         # Also patch the action parser to return a MessageAction
         with patch.object(
             codeact_agent.action_parser,

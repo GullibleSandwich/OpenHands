@@ -4,22 +4,22 @@ from browsergym.core.action.highlevel import HighLevelActionSet
 from browsergym.utils.obs import flatten_axtree_to_str
 
 from agenthub.browsing_agent.response_parser import BrowsingResponseParser
-from openhands.controller.agent import Agent
-from openhands.controller.state.state import State
-from openhands.core.config import AgentConfig
-from openhands.core.logger import openhands_logger as logger
-from openhands.core.message import Message, TextContent
-from openhands.events.action import (
+from curio.controller.agent import Agent
+from curio.controller.state.state import State
+from curio.core.config import AgentConfig
+from curio.core.logger import openhands_logger as logger
+from curio.core.message import Message, TextContent
+from curio.events.action import (
     Action,
     AgentFinishAction,
     BrowseInteractiveAction,
     MessageAction,
 )
-from openhands.events.event import EventSource
-from openhands.events.observation import BrowserOutputObservation
-from openhands.events.observation.observation import Observation
-from openhands.llm.llm import LLM
-from openhands.runtime.plugins import (
+from curio.events.event import EventSource
+from curio.events.observation import BrowserOutputObservation
+from curio.events.observation.observation import Observation
+from curio.llm.llm import LLM
+from curio.runtime.plugins import (
     PluginRequirement,
 )
 

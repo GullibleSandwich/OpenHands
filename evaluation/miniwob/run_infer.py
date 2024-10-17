@@ -15,26 +15,26 @@ from evaluation.utils.shared import (
     reset_logger_for_multiprocessing,
     run_evaluation,
 )
-from openhands.controller.state.state import State
-from openhands.core.config import (
+from curio.controller.state.state import State
+from curio.core.config import (
     AppConfig,
     SandboxConfig,
     get_llm_config_arg,
     parse_arguments,
 )
-from openhands.core.logger import openhands_logger as logger
-from openhands.core.main import create_runtime, run_controller
-from openhands.events.action import (
+from curio.core.logger import openhands_logger as logger
+from curio.core.main import create_runtime, run_controller
+from curio.events.action import (
     BrowseInteractiveAction,
     CmdRunAction,
     MessageAction,
 )
-from openhands.events.observation import CmdOutputObservation
-from openhands.runtime.browser.browser_env import (
+from curio.events.observation import CmdOutputObservation
+from curio.runtime.browser.browser_env import (
     BROWSER_EVAL_GET_GOAL_ACTION,
     BROWSER_EVAL_GET_REWARDS_ACTION,
 )
-from openhands.runtime.runtime import Runtime
+from curio.runtime.runtime import Runtime
 
 SUPPORTED_AGENT_CLS = {'BrowsingAgent'}
 

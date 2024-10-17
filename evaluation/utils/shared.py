@@ -12,12 +12,12 @@ import pandas as pd
 from pydantic import BaseModel
 from tqdm import tqdm
 
-from openhands.controller.state.state import State
-from openhands.core.config import LLMConfig
-from openhands.core.logger import get_console_handler
-from openhands.core.logger import openhands_logger as logger
-from openhands.events.action import Action
-from openhands.events.action.message import MessageAction
+from curio.controller.state.state import State
+from curio.core.config import LLMConfig
+from curio.core.logger import get_console_handler
+from curio.core.logger import openhands_logger as logger
+from curio.events.action import Action
+from curio.events.action.message import MessageAction
 
 
 class EvalMetadata(BaseModel):

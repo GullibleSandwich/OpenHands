@@ -29,19 +29,19 @@ from evaluation.utils.shared import (
     reset_logger_for_multiprocessing,
     run_evaluation,
 )
-from openhands.controller.state.state import State
-from openhands.core.config import (
+from curio.controller.state.state import State
+from curio.core.config import (
     AppConfig,
     SandboxConfig,
     get_llm_config_arg,
     get_parser,
     load_app_config,
 )
-from openhands.core.logger import openhands_logger as logger
-from openhands.core.main import create_runtime, run_controller
-from openhands.events.action import CmdRunAction
-from openhands.events.observation import CmdOutputObservation
-from openhands.runtime.runtime import Runtime
+from curio.core.logger import openhands_logger as logger
+from curio.core.main import create_runtime, run_controller
+from curio.events.action import CmdRunAction
+from curio.events.observation import CmdOutputObservation
+from curio.runtime.runtime import Runtime
 
 config = load_app_config()
 

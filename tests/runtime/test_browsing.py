@@ -5,13 +5,13 @@ import time
 
 from conftest import _load_runtime
 
-from openhands.core.logger import openhands_logger as logger
-from openhands.events.action import (
+from curio.core.logger import openhands_logger as logger
+from curio.events.action import (
     BrowseInteractiveAction,
     BrowseURLAction,
     CmdRunAction,
 )
-from openhands.events.observation import (
+from curio.events.observation import (
     BrowserOutputObservation,
     CmdOutputObservation,
 )
@@ -78,7 +78,7 @@ def test_browsergym_eval_env(box_class, temp_dir):
         base_container_image='xingyaoww/od-eval-miniwob:v1.0',
         browsergym_eval_env='browsergym/miniwob.choose-list',
     )
-    from openhands.runtime.browser.browser_env import (
+    from curio.runtime.browser.browser_env import (
         BROWSER_EVAL_GET_GOAL_ACTION,
         BROWSER_EVAL_GET_REWARDS_ACTION,
     )

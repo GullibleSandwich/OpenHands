@@ -7,7 +7,7 @@ from unittest.mock import patch
 import docx
 import pytest
 
-from openhands.runtime.plugins.agent_skills.file_ops.file_ops import (
+from curio.runtime.plugins.agent_skills.file_ops.file_ops import (
     MSG_FILE_UPDATED,
     WINDOW,
     _print_window,
@@ -23,19 +23,19 @@ from openhands.runtime.plugins.agent_skills.file_ops.file_ops import (
     search_dir,
     search_file,
 )
-from openhands.runtime.plugins.agent_skills.file_reader.file_readers import (
+from curio.runtime.plugins.agent_skills.file_reader.file_readers import (
     parse_docx,
     parse_latex,
     parse_pdf,
     parse_pptx,
 )
-from openhands.runtime.plugins.agent_skills.utils.aider import Linter
+from curio.runtime.plugins.agent_skills.utils.aider import Linter
 
 
 # CURRENT_FILE must be reset for each test
 @pytest.fixture(autouse=True)
 def reset_current_file():
-    from openhands.runtime.plugins.agent_skills import agentskills
+    from curio.runtime.plugins.agent_skills import agentskills
 
     agentskills.CURRENT_FILE = None
 

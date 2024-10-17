@@ -4,11 +4,11 @@ import pytest
 from pytest import MonkeyPatch
 
 import agenthub  # noqa: F401
-from openhands.core.exceptions import (
+from curio.core.exceptions import (
     AgentNotRegisteredError,
     MicroAgentValidationError,
 )
-from openhands.utils.microagent import MicroAgent
+from curio.utils.microagent import MicroAgent
 
 CONTENT = (
     '# dummy header\n' 'dummy content\n' '## dummy subheader\n' 'dummy subcontent\n'

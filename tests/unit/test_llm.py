@@ -2,9 +2,9 @@ from unittest.mock import patch
 
 import pytest
 
-from openhands.core.config import LLMConfig
-from openhands.core.metrics import Metrics
-from openhands.llm.llm import LLM
+from curio.core.config import LLMConfig
+from curio.core.metrics import Metrics
+from curio.llm.llm import LLM
 
 
 @pytest.fixture
@@ -19,7 +19,7 @@ def test_llm_init_with_default_config(default_config):
     assert isinstance(llm.metrics, Metrics)
 
 
-@patch('openhands.llm.llm.litellm.get_model_info')
+@patch('curio.llm.llm.litellm.get_model_info')
 def test_llm_init_with_model_info(mock_get_model_info, default_config):
     mock_get_model_info.return_value = {
         'max_input_tokens': 8000,
@@ -30,7 +30,7 @@ def test_llm_init_with_model_info(mock_get_model_info, default_config):
     assert llm.config.max_output_tokens == 2000
 
 
-@patch('openhands.llm.llm.litellm.get_model_info')
+@patch('curio.llm.llm.litellm.get_model_info')
 def test_llm_init_without_model_info(mock_get_model_info, default_config):
     mock_get_model_info.side_effect = Exception('Model info not available')
     llm = LLM(default_config)
@@ -71,7 +71,7 @@ def test_llm_reset():
     assert isinstance(llm.metrics, Metrics)
 
 
-@patch('openhands.llm.llm.litellm.get_model_info')
+@patch('curio.llm.llm.litellm.get_model_info')
 def test_llm_init_with_openrouter_model(mock_get_model_info, default_config):
     default_config.model = 'openrouter:gpt-3.5-turbo'
     mock_get_model_info.return_value = {

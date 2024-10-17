@@ -4,9 +4,9 @@ import pprint
 
 import tqdm
 
-from openhands.core.config import get_llm_config_arg, get_parser, load_app_config
-from openhands.core.logger import openhands_logger as logger
-from openhands.llm.llm import LLM
+from curio.core.config import get_llm_config_arg, get_parser, load_app_config
+from curio.core.logger import openhands_logger as logger
+from curio.llm.llm import LLM
 
 config = load_app_config()
 

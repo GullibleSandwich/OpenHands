@@ -6,8 +6,8 @@ from unittest.mock import patch
 
 from conftest import _load_runtime
 
-from openhands.events.action import CmdRunAction
-from openhands.events.observation import CmdOutputObservation
+from curio.events.action import CmdRunAction
+from curio.events.observation import CmdOutputObservation
 
 # ============================================================================================================================
 # Environment variables tests

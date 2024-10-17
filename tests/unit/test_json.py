@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from openhands.core.utils import json
-from openhands.events.action import MessageAction
+from curio.core.utils import json
+from curio.events.action import MessageAction
 
 
 def test_event_serialization_deserialization():

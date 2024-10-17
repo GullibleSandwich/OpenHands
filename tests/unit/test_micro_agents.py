@@ -7,14 +7,14 @@ import yaml
 from pytest import TempPathFactory
 
 from agenthub.micro.registry import all_microagents
-from openhands.controller.agent import Agent
-from openhands.controller.state.state import State
-from openhands.core.config import AgentConfig
-from openhands.events import EventSource
-from openhands.events.action import MessageAction
-from openhands.events.stream import EventStream
-from openhands.memory.history import ShortTermHistory
-from openhands.storage import get_file_store
+from curio.controller.agent import Agent
+from curio.controller.state.state import State
+from curio.core.config import AgentConfig
+from curio.events import EventSource
+from curio.events.action import MessageAction
+from curio.events.stream import EventStream
+from curio.memory.history import ShortTermHistory
+from curio.storage import get_file_store
 
 
 @pytest.fixture

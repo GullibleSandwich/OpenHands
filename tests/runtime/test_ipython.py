@@ -4,21 +4,21 @@ import time
 
 from conftest import _load_runtime
 
-from openhands.core.logger import openhands_logger as logger
-from openhands.events.action import (
+from curio.core.logger import openhands_logger as logger
+from curio.events.action import (
     CmdRunAction,
     FileReadAction,
     FileWriteAction,
     IPythonRunCellAction,
 )
-from openhands.events.observation import (
+from curio.events.observation import (
     CmdOutputObservation,
     ErrorObservation,
     FileReadObservation,
     FileWriteObservation,
     IPythonRunCellObservation,
 )
-from openhands.runtime.client.runtime import EventStreamRuntime
+from curio.runtime.client.runtime import EventStreamRuntime
 
 # ============================================================================================================================
 # ipython-specific tests

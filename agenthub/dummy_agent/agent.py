@@ -1,10 +1,10 @@
 from typing import TypedDict, Union
 
-from openhands.controller.agent import Agent
-from openhands.controller.state.state import State
-from openhands.core.config import AgentConfig
-from openhands.core.schema import AgentState
-from openhands.events.action import (
+from curio.controller.agent import Agent
+from curio.controller.state.state import State
+from curio.core.config import AgentConfig
+from curio.core.schema import AgentState
+from curio.events.action import (
     Action,
     AddTaskAction,
     AgentFinishAction,
@@ -17,7 +17,7 @@ from openhands.events.action import (
     MessageAction,
     ModifyTaskAction,
 )
-from openhands.events.observation import (
+from curio.events.observation import (
     AgentStateChangedObservation,
     CmdOutputObservation,
     FileReadObservation,
@@ -25,8 +25,8 @@ from openhands.events.observation import (
     NullObservation,
     Observation,
 )
-from openhands.events.serialization.event import event_to_dict
-from openhands.llm.llm import LLM
+from curio.events.serialization.event import event_to_dict
+from curio.llm.llm import LLM
 
 """
 FIXME: There are a few problems this surfaced

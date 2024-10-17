@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from openhands.core.config import (
+from curio.core.config import (
     AgentConfig,
     AppConfig,
     LLMConfig,

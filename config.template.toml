@@ -14,7 +14,7 @@
 #e2b_api_key = ""
 
 # Base path for the workspace
-workspace_base = "./workspace"
+workspace_base = "/tmp/workspace"
 
 # Cache directory path
 #cache_dir = "/tmp/cache"
@@ -47,7 +47,7 @@ workspace_base = "./workspace"
 #max_iterations = 100
 
 # Path to mount the workspace in the sandbox
-#workspace_mount_path_in_sandbox = "/workspace"
+#workspace_mount_path_in_sandbox = "/tmp/workspace"
 
 # Path to mount the workspace
 #workspace_mount_path = ""

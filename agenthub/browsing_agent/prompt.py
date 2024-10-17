@@ -16,7 +16,7 @@ from agenthub.browsing_agent.utils import (
     ParseError,
     parse_html_tags_raise,
 )
-from openhands.runtime.browser.browser_env import BrowserEnv
+from curio.runtime.browser.browser_env import BrowserEnv
 
 
 @dataclass

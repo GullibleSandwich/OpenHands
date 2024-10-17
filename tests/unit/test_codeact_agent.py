@@ -3,15 +3,15 @@ from unittest.mock import Mock
 import pytest
 
 from agenthub.codeact_agent.codeact_agent import CodeActAgent
-from openhands.core.config import AgentConfig, LLMConfig
-from openhands.core.message import TextContent
-from openhands.events.observation.commands import (
+from curio.core.config import AgentConfig, LLMConfig
+from curio.core.message import TextContent
+from curio.events.observation.commands import (
     CmdOutputObservation,
     IPythonRunCellObservation,
 )
-from openhands.events.observation.delegate import AgentDelegateObservation
-from openhands.events.observation.error import ErrorObservation
-from openhands.llm.llm import LLM
+from curio.events.observation.delegate import AgentDelegateObservation
+from curio.events.observation.error import ErrorObservation
+from curio.llm.llm import LLM
 
 
 @pytest.fixture

@@ -21,18 +21,18 @@ from evaluation.utils.shared import (
     reset_logger_for_multiprocessing,
     run_evaluation,
 )
-from openhands.controller.state.state import State
-from openhands.core.config import (
+from curio.controller.state.state import State
+from curio.core.config import (
     AppConfig,
     SandboxConfig,
     get_llm_config_arg,
     parse_arguments,
 )
-from openhands.core.logger import openhands_logger as logger
-from openhands.core.main import create_runtime, run_controller
-from openhands.events.action import AgentFinishAction, CmdRunAction, MessageAction
-from openhands.events.observation import CmdOutputObservation
-from openhands.runtime.runtime import Runtime
+from curio.core.logger import openhands_logger as logger
+from curio.core.main import create_runtime, run_controller
+from curio.events.action import AgentFinishAction, CmdRunAction, MessageAction
+from curio.events.observation import CmdOutputObservation
+from curio.runtime.runtime import Runtime
 
 
 def get_config(
@@ -68,12 +68,12 @@ def initialize_runtime(
     obs: CmdOutputObservation
 
     # Set instance id
-    action = CmdRunAction(command='mkdir -p /workspace')
+    action = CmdRunAction(command='mkdir -p /tmp/workspace')
     logger.info(action, extra={'msg_type': 'ACTION'})
     obs = runtime.run_action(action)
     assert obs.exit_code == 0
 
-    action = CmdRunAction(command='cd /workspace')
+    action = CmdRunAction(command='cd /tmp/workspace')
     logger.info(action, extra={'msg_type': 'ACTION'})
     obs = runtime.run_action(action)
     assert obs.exit_code == 0
@@ -87,7 +87,7 @@ def initialize_runtime(
             create_sh_file(host_script_path, init_cmd)
             runtime.copy_to(
                 host_script_path,
-                '/workspace',
+                '/tmp/workspace',
             )
 
         logger.info(f'Running init script: {script_name}')
@@ -123,7 +123,7 @@ def complete_runtime(
             create_sh_file(host_script_path, get_agent_result_cmd)
             runtime.copy_to(
                 host_script_path,
-                '/workspace',
+                '/tmp/workspace',
             )
             logger.info(f'Running get agent result cmd: {script_name}')
 
@@ -151,7 +151,7 @@ def complete_runtime(
                 create_sh_file(host_script_path, get_ground_truth_cmd)
                 runtime.copy_to(
                     host_script_path,
-                    '/workspace',
+                    '/tmp/workspace',
                 )
             logger.info(f'Running get ground truth cmd: {script_name}')
 

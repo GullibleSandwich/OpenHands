@@ -1,4 +1,4 @@
-from openhands.runtime.plugins import AgentSkillsRequirement
+from curio.runtime.plugins import AgentSkillsRequirement
 
 _AGENT_SKILLS_DOCS = AgentSkillsRequirement.documentation
 

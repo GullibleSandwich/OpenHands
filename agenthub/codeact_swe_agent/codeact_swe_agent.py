@@ -5,26 +5,26 @@ from agenthub.codeact_swe_agent.prompt import (
     SYSTEM_SUFFIX,
 )
 from agenthub.codeact_swe_agent.response_parser import CodeActSWEResponseParser
-from openhands.controller.agent import Agent
-from openhands.controller.state.state import State
-from openhands.core.config import AgentConfig
-from openhands.core.message import ImageContent, Message, TextContent
-from openhands.events.action import (
+from curio.controller.agent import Agent
+from curio.controller.state.state import State
+from curio.core.config import AgentConfig
+from curio.core.message import ImageContent, Message, TextContent
+from curio.events.action import (
     Action,
     AgentFinishAction,
     CmdRunAction,
     IPythonRunCellAction,
     MessageAction,
 )
-from openhands.events.observation import (
+from curio.events.observation import (
     CmdOutputObservation,
     IPythonRunCellObservation,
 )
-from openhands.events.observation.error import ErrorObservation
-from openhands.events.observation.observation import Observation
-from openhands.events.serialization.event import truncate_content
-from openhands.llm.llm import LLM
-from openhands.runtime.plugins import (
+from curio.events.observation.error import ErrorObservation
+from curio.events.observation.observation import Observation
+from curio.events.serialization.event import truncate_content
+from curio.llm.llm import LLM
+from curio.runtime.plugins import (
     AgentSkillsRequirement,
     JupyterRequirement,
     PluginRequirement,

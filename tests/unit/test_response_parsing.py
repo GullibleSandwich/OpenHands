@@ -2,9 +2,9 @@ import pytest
 
 from agenthub.micro.agent import parse_response as parse_response_micro
 from agenthub.planner_agent.prompt import parse_response as parse_response_planner
-from openhands.core.exceptions import LLMResponseError
-from openhands.core.utils.json import loads as custom_loads
-from openhands.events.action import (
+from curio.core.exceptions import LLMResponseError
+from curio.core.utils.json import loads as custom_loads
+from curio.events.action import (
     FileWriteAction,
     MessageAction,
 )

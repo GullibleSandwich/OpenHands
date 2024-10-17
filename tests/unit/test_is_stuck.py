@@ -5,21 +5,21 @@ from unittest.mock import Mock, patch
 import pytest
 from pytest import TempPathFactory
 
-from openhands.controller.agent_controller import AgentController
-from openhands.controller.state.state import State
-from openhands.controller.stuck import StuckDetector
-from openhands.events.action import CmdRunAction, FileReadAction, MessageAction
-from openhands.events.action.commands import IPythonRunCellAction
-from openhands.events.observation import (
+from curio.controller.agent_controller import AgentController
+from curio.controller.state.state import State
+from curio.controller.stuck import StuckDetector
+from curio.events.action import CmdRunAction, FileReadAction, MessageAction
+from curio.events.action.commands import IPythonRunCellAction
+from curio.events.observation import (
     CmdOutputObservation,
     FileReadObservation,
 )
-from openhands.events.observation.commands import IPythonRunCellObservation
-from openhands.events.observation.empty import NullObservation
-from openhands.events.observation.error import ErrorObservation
-from openhands.events.stream import EventSource, EventStream
-from openhands.memory.history import ShortTermHistory
-from openhands.storage import get_file_store
+from curio.events.observation.commands import IPythonRunCellObservation
+from curio.events.observation.empty import NullObservation
+from curio.events.observation.error import ErrorObservation
+from curio.events.stream import EventSource, EventStream
+from curio.memory.history import ShortTermHistory
+from curio.storage import get_file_store
 
 
 def collect_events(stream):

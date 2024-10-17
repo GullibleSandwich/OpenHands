@@ -1,4 +1,4 @@
-from openhands.core.message import ImageContent, Message, TextContent
+from curio.core.message import ImageContent, Message, TextContent
 
 
 def test_message_serialization():

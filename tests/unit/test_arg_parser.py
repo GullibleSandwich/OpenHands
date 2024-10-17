@@ -1,6 +1,6 @@
 import pytest
 
-from openhands.core.config import _DEFAULT_AGENT, _MAX_ITERATIONS, get_parser
+from curio.core.config import _DEFAULT_AGENT, _MAX_ITERATIONS, get_parser
 
 
 def test_parser_default_values():

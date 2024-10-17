@@ -1,4 +1,4 @@
-from openhands.events.action import (
+from curio.events.action import (
     Action,
     AddTaskAction,
     AgentFinishAction,
@@ -11,8 +11,8 @@ from openhands.events.action import (
     MessageAction,
     ModifyTaskAction,
 )
-from openhands.events.action.action import ActionConfirmationStatus
-from openhands.events.serialization import (
+from curio.events.action.action import ActionConfirmationStatus
+from curio.events.serialization import (
     event_from_dict,
     event_to_dict,
     event_to_memory,

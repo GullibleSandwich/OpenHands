@@ -4,8 +4,8 @@ from unittest.mock import Mock
 
 import pytest
 
-from openhands.utils.microagent import MicroAgent
-from openhands.utils.prompt import PromptManager
+from curio.utils.microagent import MicroAgent
+from curio.utils.prompt import PromptManager
 
 
 @pytest.fixture

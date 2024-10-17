@@ -1,9 +1,9 @@
-from openhands.controller.action_parser import ResponseParser
-from openhands.core.utils import json
-from openhands.events.action import (
+from curio.controller.action_parser import ResponseParser
+from curio.core.utils import json
+from curio.events.action import (
     Action,
 )
-from openhands.events.serialization.action import action_from_dict
+from curio.events.serialization.action import action_from_dict
 
 
 class PlannerResponseParser(ResponseParser):

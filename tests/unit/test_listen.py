@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from openhands.core.config import AppConfig
+from curio.core.config import AppConfig
 
 
 # Mock the SessionManager to avoid asyncio issues
@@ -16,10 +16,10 @@ class MockStaticFiles:
 
 
 # Patch necessary components before importing from listen
-with patch('openhands.server.session.SessionManager', MockSessionManager), patch(
+with patch('curio.server.session.SessionManager', MockSessionManager), patch(
     'fastapi.staticfiles.StaticFiles', MockStaticFiles
 ):
-    from openhands.server.listen import is_extension_allowed, load_file_upload_config
+    from curio.server.listen import is_extension_allowed, load_file_upload_config
 
 
 def test_load_file_upload_config():
@@ -28,7 +28,7 @@ def test_load_file_upload_config():
         file_uploads_restrict_file_types=True,
         file_uploads_allowed_extensions=['.txt', '.pdf'],
     )
-    with patch('openhands.server.listen.config', config):
+    with patch('curio.server.listen.config', config):
         max_size, restrict_types, allowed_extensions = load_file_upload_config()
 
         assert max_size == 10
@@ -42,7 +42,7 @@ def test_load_file_upload_config_invalid_max_size():
         file_uploads_restrict_file_types=False,
         file_uploads_allowed_extensions=[],
     )
-    with patch('openhands.server.listen.config', config):
+    with patch('curio.server.listen.config', config):
         max_size, restrict_types, allowed_extensions = load_file_upload_config()
 
         assert max_size == 0  # Should default to 0 when invalid
@@ -51,8 +51,8 @@ def test_load_file_upload_config_invalid_max_size():
 
 
 def test_is_extension_allowed():
-    with patch('openhands.server.listen.RESTRICT_FILE_TYPES', True), patch(
-        'openhands.server.listen.ALLOWED_EXTENSIONS', ['.txt', '.pdf']
+    with patch('curio.server.listen.RESTRICT_FILE_TYPES', True), patch(
+        'curio.server.listen.ALLOWED_EXTENSIONS', ['.txt', '.pdf']
     ):
         assert is_extension_allowed('file.txt')
         assert is_extension_allowed('file.pdf')
@@ -61,7 +61,7 @@ def test_is_extension_allowed():
 
 
 def test_is_extension_allowed_no_restrictions():
-    with patch('openhands.server.listen.RESTRICT_FILE_TYPES', False):
+    with patch('curio.server.listen.RESTRICT_FILE_TYPES', False):
         assert is_extension_allowed('file.txt')
         assert is_extension_allowed('file.pdf')
         assert is_extension_allowed('file.doc')
@@ -69,8 +69,8 @@ def test_is_extension_allowed_no_restrictions():
 
 
 def test_is_extension_allowed_wildcard():
-    with patch('openhands.server.listen.RESTRICT_FILE_TYPES', True), patch(
-        'openhands.server.listen.ALLOWED_EXTENSIONS', ['.*']
+    with patch('curio.server.listen.RESTRICT_FILE_TYPES', True), patch(
+        'curio.server.listen.ALLOWED_EXTENSIONS', ['.*']
     ):
         assert is_extension_allowed('file.txt')
         assert is_extension_allowed('file.pdf')

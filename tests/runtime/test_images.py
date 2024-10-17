@@ -5,8 +5,8 @@ import time
 import pytest
 from conftest import _load_runtime
 
-from openhands.core.logger import openhands_logger as logger
-from openhands.events.action import CmdRunAction
+from curio.core.logger import openhands_logger as logger
+from curio.events.action import CmdRunAction
 
 # ============================================================================================================================
 # Image-specific tests

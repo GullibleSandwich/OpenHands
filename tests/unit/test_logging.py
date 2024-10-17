@@ -3,8 +3,8 @@ from io import StringIO
 
 import pytest
 
-from openhands.core.config import AppConfig, LLMConfig
-from openhands.core.logger import openhands_logger as openhands_logger
+from curio.core.config import AppConfig, LLMConfig
+from curio.core.logger import openhands_logger as openhands_logger
 
 
 @pytest.fixture

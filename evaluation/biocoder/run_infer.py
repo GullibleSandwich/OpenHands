@@ -18,18 +18,18 @@ from evaluation.utils.shared import (
     reset_logger_for_multiprocessing,
     run_evaluation,
 )
-from openhands.controller.state.state import State
-from openhands.core.config import (
+from curio.controller.state.state import State
+from curio.core.config import (
     AppConfig,
     SandboxConfig,
     get_llm_config_arg,
     parse_arguments,
 )
-from openhands.core.logger import openhands_logger as logger
-from openhands.core.main import create_runtime, run_controller
-from openhands.events.action import CmdRunAction
-from openhands.events.observation import CmdOutputObservation
-from openhands.runtime.runtime import Runtime
+from curio.core.logger import openhands_logger as logger
+from curio.core.main import create_runtime, run_controller
+from curio.events.action import CmdRunAction
+from curio.events.observation import CmdOutputObservation
+from curio.runtime.runtime import Runtime
 
 AGENT_CLS_TO_FAKE_USER_RESPONSE_FN = {
     'CodeActAgent': functools.partial(
@@ -87,7 +87,7 @@ def initialize_runtime(
 
     file_ext = FILE_EXT_MAP[instance.language.lower()]
 
-    action = CmdRunAction(command='mkdir -p /workspace && mkdir -p /testing_files')
+    action = CmdRunAction(command='mkdir -p /tmp/workspace && mkdir -p /testing_files')
     logger.info(action, extra={'msg_type': 'ACTION'})
     obs = runtime.run_action(action)
     assert obs.exit_code == 0
@@ -120,7 +120,7 @@ def initialize_runtime(
     )
     runtime.copy_to(remove_code_script, '/testing_files')
 
-    action = CmdRunAction(command='cd /workspace')
+    action = CmdRunAction(command='cd /tmp/workspace')
     logger.info(action, extra={'msg_type': 'ACTION'})
     obs = runtime.run_action(action)
     assert obs.exit_code == 0
@@ -139,14 +139,14 @@ def initialize_runtime(
     assert obs.exit_code == 0, f'Failed to unzip the repository: {obs.content}'
 
     # chmod 777
-    action = CmdRunAction(command='chmod -R 777 /workspace')
+    action = CmdRunAction(command='chmod -R 777 /tmp/workspace')
     logger.info(action, extra={'msg_type': 'ACTION'})
     obs = runtime.run_action(action)
     assert obs.exit_code == 0, f'Failed to chmod the files: {obs.content}'
 
     # remove code for evaluation instance
     target_filepath = os.path.join(
-        '/workspace', instance.repository.split('/')[1], instance.filePath
+        '/tmp/workspace', instance.repository.split('/')[1], instance.filePath
     )
     line_start = instance.lineStart
     line_end = instance.lineEnd
@@ -183,7 +183,7 @@ def complete_runtime(
 
     file_ext = FILE_EXT_MAP[instance.language.lower()]
     target_filepath = os.path.join(
-        '/workspace', instance.repository.split('/')[1], instance.filePath
+        '/tmp/workspace', instance.repository.split('/')[1], instance.filePath
     )
     generated_path = os.path.join('/testing_files', 'generated.' + file_ext)
 
@@ -256,7 +256,7 @@ def process_instance(
 
     # Prepare instruction
     instruction = (
-        f'Please complete the function "{instance.signature}" in the file /workspace/{instance.repository.split("/")[1]}/{instance.filePath}.\n'
+        f'Please complete the function "{instance.signature}" in the file /tmp/workspace/{instance.repository.split("/")[1]}/{instance.filePath}.\n'
         f'The environment has been set up for you to start working. You may assume all necessary tools are installed.\n'
         f'To complete the task, you must directly modify the file and fill in the function, keeping in mind that the function signature is on line {instance.lineStart-1}\n\n'
         f'The function should do the following:\n'
